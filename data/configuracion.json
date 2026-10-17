@@ -18,7 +18,9 @@
   },
 
   "familia": {
-    "padres": "Gisselle Granados y familia",
+    "titulo": "Mi mamá y mis padrinos",
+    "etiquetaPadres": "Mi mamá",
+    "padres": "Gisselle Granados",
     "padrinos": ["Martha Ofelia Pantoja", "Aaron A. Armas"]
   },
 
