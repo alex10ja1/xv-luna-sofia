@@ -63,9 +63,9 @@
   },
 
   "confirmacion": {
-    "_comentario": "maximoPersonas es PROVISIONAL (dato pendiente de la clienta). Cambiar a modo real cuando Rosca dé la URL de Apps Script.",
-    "modo": "demo",
-    "urlAppsScript": "",
+    "_comentario": "maximoPersonas es PROVISIONAL (dato pendiente de la clienta). En modo real desde el 17 de octubre de 2026 (hoja Confirmaciones – XV Luna Sofía).",
+    "modo": "real",
+    "urlAppsScript": "https://script.google.com/macros/s/AKfycbx2AzjdIS7OaTFhtfYkoJvGtBj5_2_CPv60FXU8yiVpfR53SCX5rcajeGPyZh0h1cQY/exec",
     "fechaLimite": "2026-11-20",
     "maximoPersonas": 5,
     "textoPase": "Pase personal",
