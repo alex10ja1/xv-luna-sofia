@@ -1,0 +1,3 @@
+Fotos de la galería (PENDIENTE: llegan el 19 de octubre de 2026).
+Nombres: foto-01.jpg, foto-02.jpg... Ancho máximo 1200 px, JPG.
+Agrégalas también en data/configuracion.json → galeria.fotos.

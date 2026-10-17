@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="referrer" content="no-referrer">
+  <title>Lista de invitados · XV Luna Sofía</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="panel.css?v=1">
+</head>
+<body>
+  <header class="encabezado">
+    <p class="marca">Invitara</p>
+    <h1 class="evento" id="evento">XV Luna Sofía</h1>
+    <p class="subtitulo">Lista de invitados</p>
+  </header>
+
+  <main class="contenido">
+    <!-- 1. Clave -->
+    <section class="tarjeta acceso" id="vista-clave" aria-labelledby="titulo-clave">
+      <h2 class="titulo-tarjeta" id="titulo-clave">Escribe tu clave</h2>
+      <p class="ayuda">Son 6 letras y números. Te la mandó Invitara por mensaje.</p>
+      <form id="form-clave" novalidate>
+        <label class="etiqueta-campo" for="clave">Clave del panel</label>
+        <input id="clave" name="clave" type="text" inputmode="text" autocomplete="off" autocapitalize="characters"
+               spellcheck="false" maxlength="12" aria-describedby="error-clave" required>
+        <p class="error" id="error-clave" role="alert" hidden></p>
+        <button class="boton" type="submit" id="boton-entrar">Entrar</button>
+      </form>
+    </section>
+
+    <!-- 2. Panel -->
+    <section id="vista-panel" hidden aria-label="Confirmaciones">
+      <div class="barra">
+        <p class="actualizado" id="actualizado"></p>
+        <div class="barra__botones">
+          <button class="boton boton--claro" type="button" id="boton-actualizar">Actualizar</button>
+          <button class="boton boton--texto" type="button" id="boton-salir">Salir</button>
+        </div>
+      </div>
+      <p class="error error--global" id="error-panel" role="alert" hidden></p>
+
+      <div class="totales">
+        <div class="total total--grande">
+          <p class="total__numero" id="t-personas">0</p>
+          <p class="total__texto">personas asistirán</p>
+        </div>
+        <div class="total">
+          <p class="total__numero" id="t-familias">0</p>
+          <p class="total__texto">familias confirmaron</p>
+        </div>
+        <div class="total">
+          <p class="total__numero" id="t-no">0</p>
+          <p class="total__texto">no asistirán</p>
+        </div>
+        <div class="total">
+          <p class="total__numero" id="t-faltan">0</p>
+          <p class="total__texto" id="t-faltan-texto">lugares por confirmar</p>
+        </div>
+      </div>
+      <p class="aviso" id="aviso-duplicados" hidden></p>
+
+      <div class="herramientas">
+        <label class="etiqueta-campo" for="buscar">Buscar por nombre</label>
+        <input id="buscar" type="search" autocomplete="off" placeholder="Ej. Pérez">
+        <div class="filtros" role="group" aria-label="Filtrar">
+          <button type="button" class="filtro" data-filtro="todos" aria-pressed="true">Todos <span></span></button>
+          <button type="button" class="filtro" data-filtro="si" aria-pressed="false">Asistirán <span></span></button>
+          <button type="button" class="filtro" data-filtro="no" aria-pressed="false">No asistirán <span></span></button>
+        </div>
+        <button class="boton boton--claro boton--ancho" type="button" id="boton-descargar">Descargar lista</button>
+      </div>
+
+      <p class="conteo" id="conteo" aria-live="polite"></p>
+      <ul class="lista" id="lista"></ul>
+    </section>
+  </main>
+
+  <footer class="pie">Hecho con cariño por <span class="marca marca--chica">Invitara</span></footer>
+
+  <script src="panel.js?v=1"></script>
+</body>
+</html>

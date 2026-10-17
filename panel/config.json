@@ -1,0 +1,11 @@
+{
+  "_comentario": "Panel de invitados de Invitara. Cambia solo los valores. Ver INTEGRAR.md, sección «Panel de una clienta nueva». La clave NO va aquí: vive en la pestaña Config de la hoja.",
+  "evento": "XV Luna Sofía",
+  "urlAppsScript": "",
+  "colores": {
+    "papel": "#EEF1F8",
+    "principal": "#17368A",
+    "dorado": "#5E6676",
+    "tinta": "#131D3F"
+  }
+}

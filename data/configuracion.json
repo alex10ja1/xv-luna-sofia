@@ -1,0 +1,79 @@
+{
+  "_comentario": "Invitación de XV de Luna Sofía. Aquí van TODOS los datos que la clienta puede cambiar. Edita solo los valores (lo que está a la derecha de los dos puntos). No hace falta tocar el diseño.",
+
+  "portada": {
+    "etiqueta": "Mis XV años",
+    "numero": "XV",
+    "nombre": "Luna Sofía",
+    "fechaTexto": "Sábado 5 de diciembre · 2026",
+    "ciudad": "Uruapan, Michoacán"
+  },
+
+  "frase": "Este día tan especial quiero compartirlo contigo, en presencia de Dios y de mi familia.",
+
+  "cuentaRegresiva": {
+    "_comentario": "Hora del centro de México (-06:00).",
+    "fechaISO": "2026-12-05T18:00:00-06:00",
+    "textoTerminada": "¡Hoy es el gran día!"
+  },
+
+  "familia": {
+    "padres": "Gisselle Granados y familia",
+    "padrinos": ["Martha Ofelia Pantoja", "Aaron A. Armas"]
+  },
+
+  "misa": {
+    "titulo": "Misa",
+    "lugar": "Parroquia San Pablo Apóstol",
+    "direccion": "Paseo de la Cima 1A, Balcones",
+    "hora": "6:00 pm",
+    "mapa": "https://www.google.com/maps/search/?api=1&query=Parroquia+San+Pablo+Ap%C3%B3stol%2C+Paseo+de+la+Cima+1A%2C+Balcones%2C+Uruapan%2C+Michoac%C3%A1n"
+  },
+
+  "recepcion": {
+    "titulo": "Recepción",
+    "lugar": "Salón Los Viveros",
+    "direccion": "Dr. Juan de Alvarado #65, Col. Viveros, Uruapan, Michoacán",
+    "hora": "7:30 pm",
+    "mapa": "https://www.google.com/maps/search/?api=1&query=Sal%C3%B3n+Los+Viveros%2C+Dr.+Juan+de+Alvarado+65%2C+Col.+Viveros%2C+Uruapan%2C+Michoac%C3%A1n"
+  },
+
+  "vestimenta": {
+    "codigo": "Formal elegante de noche",
+    "nota": "El color azul, en todas sus tonalidades, está reservado para la quinceañera."
+  },
+
+  "galeria": {
+    "_comentario": "PENDIENTE: fotos de la clienta (llegan el 19 de octubre). Mientras la lista esté vacía, la sección no se muestra. Ejemplo: { \"src\": \"fotos/foto-01.jpg\", \"alt\": \"Luna Sofía\" }",
+    "fotos": []
+  },
+
+  "mesaRegalos": {
+    "_comentario": "PENDIENTE: tienda y número de evento. La sección aparece cuando 'tienda' y 'enlace' tengan valor.",
+    "tienda": "",
+    "numeroEvento": "",
+    "enlace": "",
+    "texto": "Tu presencia es mi mejor regalo. Si deseas tener un detalle conmigo, aquí está mi mesa de regalos."
+  },
+
+  "musica": {
+    "_comentario": "PENDIENTE: audio de la clienta. Si el archivo no existe, el botón de música no aparece.",
+    "archivo": "musica/cancion.mp3",
+    "titulo": "El vals del amor"
+  },
+
+  "confirmacion": {
+    "_comentario": "maximoPersonas es PROVISIONAL (dato pendiente de la clienta). Cambiar a modo real cuando Rosca dé la URL de Apps Script.",
+    "modo": "demo",
+    "urlAppsScript": "",
+    "fechaLimite": "2026-11-20",
+    "maximoPersonas": 5,
+    "textoPase": "Pase personal",
+    "mensajeExito": "¡Gracias! Tu confirmación quedó registrada."
+  },
+
+  "cierre": {
+    "frase": "Gracias por ser parte de esta noche tan especial. ¡Te espero!",
+    "firma": "Luna Sofía"
+  }
+}

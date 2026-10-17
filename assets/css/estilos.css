@@ -1,0 +1,655 @@
+/* ==========================================================================
+   ESTILOS.CSS — XV Luna Sofía · Portada A (Luna creciente)
+   Primero celular (390 px). Colores en variables: el módulo de
+   confirmación (confirmacion.css) lee las de "Confirmación".
+   ========================================================================== */
+
+/* ---------- Tipografías (incluidas en el repositorio) ---------- */
+@font-face { font-family: 'Great Vibes'; src: url('../fuentes/great-vibes-latin-400-normal.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Cormorant Garamond'; src: url('../fuentes/cormorant-garamond-latin-400-normal.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Cormorant Garamond'; src: url('../fuentes/cormorant-garamond-latin-500-normal.woff2') format('woff2'); font-weight: 500; font-display: swap; }
+@font-face { font-family: 'Cormorant Garamond'; src: url('../fuentes/cormorant-garamond-latin-600-normal.woff2') format('woff2'); font-weight: 600 700; font-display: swap; }
+@font-face { font-family: 'Cormorant Garamond'; src: url('../fuentes/cormorant-garamond-latin-400-italic.woff2') format('woff2'); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Jost'; src: url('../fuentes/jost-latin-400-normal.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Jost'; src: url('../fuentes/jost-latin-500-normal.woff2') format('woff2'); font-weight: 500 600; font-display: swap; }
+@font-face { font-family: 'Pinyon Script'; src: url('../fuentes/pinyon-script-latin-400-normal.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+
+:root {
+  /* Paleta de la portada A */
+  --azul-noche: #0E1F57;
+  --azul-rey: #17368A;
+  --azul-brillo: #3D5FBF;
+  --plata-claro: #E9ECF3;   /* texto sobre azul */
+  --plata: #C3C9D6;
+  --plata-oscuro: #5E6676;  /* plata sobre fondos claros (contraste 5.6:1) */
+  --perla: #F7F8FC;         /* tarjetas */
+  --tinta: #131D3F;
+
+  --degradado-plata: linear-gradient(100deg, #AEB5C3 0%, #FFFFFF 20%, #C6CCD8 40%, #F5F7FA 58%, #A7AEBD 80%, #E6E9F0 100%);
+
+  --fuente-script: 'Great Vibes', 'Brush Script MT', cursive;
+  --fuente-serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --fuente-sans: 'Jost', 'Segoe UI', system-ui, sans-serif;
+
+  /* Confirmación (los lee confirmacion.css) */
+  --color-principal: var(--azul-rey);
+  --color-sobre-principal: #FFFFFF;
+  --color-texto: var(--tinta);
+  --color-texto-suave: #4A5470;
+  --color-fondo-campo: #FFFFFF;
+  --color-borde: #B9C1D6;
+  --color-error: #B3261E;
+  --color-exito: #22704A;
+  --fuente-cuerpo: var(--fuente-serif);
+  --radio-campo: 12px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--azul-noche);
+  color: var(--plata-claro);
+  font-family: var(--fuente-serif);
+  font-size: 19px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+body.sobre-cerrado { overflow: hidden; }
+
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+h1, h2, h3, p { margin: 0; }
+
+/* ---------- Cielo de fondo (fijo, sin imágenes) ---------- */
+.cielo {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(1.2px 1.2px at 12% 18%, rgba(255,255,255,.75) 50%, transparent 51%),
+    radial-gradient(1px 1px at 72% 9%, rgba(255,255,255,.6) 50%, transparent 51%),
+    radial-gradient(1.4px 1.4px at 86% 44%, rgba(255,255,255,.7) 50%, transparent 51%),
+    radial-gradient(1px 1px at 33% 61%, rgba(255,255,255,.55) 50%, transparent 51%),
+    radial-gradient(1.2px 1.2px at 58% 78%, rgba(255,255,255,.6) 50%, transparent 51%),
+    radial-gradient(1px 1px at 8% 88%, rgba(255,255,255,.55) 50%, transparent 51%),
+    radial-gradient(1px 1px at 92% 92%, rgba(255,255,255,.5) 50%, transparent 51%),
+    radial-gradient(1.3px 1.3px at 45% 32%, rgba(255,255,255,.5) 50%, transparent 51%),
+    radial-gradient(1px 1px at 24% 40%, rgba(255,255,255,.45) 50%, transparent 51%),
+    radial-gradient(1px 1px at 66% 54%, rgba(255,255,255,.45) 50%, transparent 51%),
+    radial-gradient(ellipse 90% 60% at 50% 20%, #2246A8 0%, transparent 70%),
+    linear-gradient(180deg, var(--azul-rey) 0%, #13307D 45%, var(--azul-noche) 100%);
+  background-size: 260px 260px, 310px 310px, 280px 280px, 240px 240px, 330px 330px, 290px 290px, 350px 350px, 270px 270px, 230px 230px, 300px 300px, 100% 100%, 100% 100%;
+}
+
+/* ---------- Texto plateado en degradado (solo sobre azul) ---------- */
+.plata {
+  background: var(--degradado-plata);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: brillo-plata 9s ease-in-out infinite alternate;
+}
+@keyframes brillo-plata {
+  from { background-position: 0% 50%; }
+  to   { background-position: 100% 50%; }
+}
+
+.linea-plata {
+  display: block;
+  width: 150px;
+  height: 1px;
+  margin: 14px auto 16px;
+  background: linear-gradient(90deg, transparent, var(--plata) 30%, #fff 50%, var(--plata) 70%, transparent);
+}
+
+/* ==========================================================================
+   1. SOBRE DE APERTURA
+   ========================================================================== */
+.sobre {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  padding: 24px 16px;
+  background:
+    radial-gradient(ellipse 80% 55% at 50% 40%, #2448AC 0%, transparent 70%),
+    linear-gradient(180deg, var(--azul-rey), var(--azul-noche));
+  text-align: center;
+  transition: opacity .9s ease .7s, visibility 0s linear 1.6s;
+}
+.sobre.abierto { opacity: 0; visibility: hidden; pointer-events: none; }
+
+.sobre__para {
+  font-family: var(--fuente-sans);
+  font-size: 13px;
+  letter-spacing: .32em;
+  text-transform: uppercase;
+  color: var(--plata-claro);
+}
+.sobre__nombre {
+  font-family: var(--fuente-script);
+  font-size: 54px;
+  line-height: 1.1;
+  color: #F2F4F8;
+}
+.sobre__accion {
+  font-family: var(--fuente-serif);
+  font-style: italic;
+  font-size: 19px;
+  color: var(--plata-claro);
+  animation: latido 2.4s ease-in-out infinite;
+}
+@keyframes latido { 50% { opacity: .55; } }
+
+.sobre__cuerpo {
+  position: relative;
+  width: min(82vw, 320px);
+  aspect-ratio: 3 / 2;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  perspective: 900px;
+  -webkit-tap-highlight-color: transparent;
+}
+.sobre__cuerpo:focus-visible { outline: 2px solid #fff; outline-offset: 8px; border-radius: 6px; }
+
+.sobre__fondo {
+  position: absolute;
+  inset: 0;
+  border-radius: 6px;
+  background:
+    linear-gradient(to top right, transparent 49.6%, rgba(255,255,255,.22) 50%, transparent 50.6%) left / 50% 100% no-repeat,
+    linear-gradient(to top left, transparent 49.6%, rgba(255,255,255,.22) 50%, transparent 50.6%) right / 50% 100% no-repeat,
+    linear-gradient(160deg, #F4F6FA, #C9CFDB 55%, #E9ECF2);
+  box-shadow: 0 18px 40px rgba(4, 10, 40, .55);
+}
+.sobre__solapa {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 62%;
+  transform-origin: top center;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  background: linear-gradient(180deg, #FFFFFF, #D3D8E2);
+  filter: drop-shadow(0 2px 2px rgba(0,0,0,.2));
+  transition: transform .8s cubic-bezier(.5,.05,.3,1);
+  z-index: 2;
+}
+.sobre.abierto .sobre__solapa { transform: rotateX(180deg); }
+
+.sobre__sello {
+  position: absolute;
+  left: 50%;
+  top: 62%;
+  z-index: 3;
+  width: 74px;
+  height: 74px;
+  margin: -37px 0 0 -37px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at 35% 30%, #3A5CC0, var(--azul-rey) 55%, #0F2462);
+  box-shadow: 0 0 0 3px rgba(255,255,255,.18), 0 6px 14px rgba(5,12,45,.5), inset 0 0 0 2px rgba(200,207,220,.55);
+  transition: transform .5s ease, opacity .4s ease;
+}
+.sobre__sello svg { width: 44px; height: 44px; }
+.sobre.abierto .sobre__sello { transform: scale(.6); opacity: 0; }
+
+.sobre__destellos {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(1.5px 1.5px at 18% 22%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 80% 16%, #fff 50%, transparent 51%),
+    radial-gradient(1.2px 1.2px at 70% 80%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 26% 74%, #fff 50%, transparent 51%),
+    radial-gradient(1.4px 1.4px at 90% 58%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 10% 48%, #fff 50%, transparent 51%);
+  opacity: .7;
+  animation: titilar 4s ease-in-out infinite;
+}
+
+/* ==========================================================================
+   Botón de música
+   ========================================================================== */
+.boton-musica {
+  position: fixed;
+  right: 14px;
+  bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+  z-index: 50;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(233,236,243,.55);
+  background: rgba(14, 31, 87, .82);
+  color: var(--plata-claro);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0,0,0,.3);
+}
+.boton-musica svg { grid-area: 1 / 1; width: 22px; height: 22px; }
+.boton-musica .icono-silencio { display: none; }
+.boton-musica.pausado .icono-silencio { display: block; }
+.boton-musica:not(.pausado) .icono-nota { animation: girar-suave 3s ease-in-out infinite; }
+@keyframes girar-suave { 50% { transform: rotate(-10deg) scale(1.06); } }
+
+/* ==========================================================================
+   2. PORTADA
+   ========================================================================== */
+.portada {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 28px 16px 64px;
+  text-align: center;
+}
+.portada__arco {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  padding: 76px 18px 56px;
+  border: 1px solid rgba(214, 220, 232, .55);
+  border-radius: 50% 50% 14px 14px / calc(min(100vw - 32px, 400px) / 2) calc(min(100vw - 32px, 400px) / 2) 14px 14px;
+}
+.portada__arco::before {
+  content: '';
+  position: absolute;
+  inset: 7px;
+  border: 1px solid rgba(214, 220, 232, .28);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.portada__luna {
+  position: relative;
+  width: 172px;
+  height: 172px;
+  margin: 0 auto 26px;
+}
+.portada__luna svg { position: relative; width: 100%; height: 100%; filter: drop-shadow(0 0 10px rgba(255,255,255,.25)); }
+.portada__halo {
+  position: absolute;
+  inset: -40px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 56% 48%, rgba(140, 165, 230, .55), rgba(61, 95, 191, .25) 45%, transparent 70%);
+  animation: respirar 7s ease-in-out infinite;
+}
+@keyframes respirar { 50% { opacity: .6; transform: scale(.94); } }
+
+.portada__etiqueta {
+  font-family: var(--fuente-sans);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: .42em;
+  padding-left: .42em;
+  text-transform: uppercase;
+  color: var(--plata-claro);
+}
+.portada__xv {
+  font-family: var(--fuente-serif);
+  font-weight: 500;
+  font-size: 84px;
+  line-height: 1;
+  margin-top: 8px;
+  letter-spacing: .04em;
+}
+.portada__nombre {
+  font-family: var(--fuente-script);
+  font-weight: 400;
+  font-size: clamp(58px, 17vw, 80px);
+  line-height: 1.25;
+  padding: 0 .12em;
+  margin-top: 2px;
+}
+.portada__fecha {
+  font-family: var(--fuente-serif);
+  font-weight: 600;
+  font-size: 23px;
+  color: #F4F6FA;
+}
+.portada__ciudad {
+  margin-top: 6px;
+  font-style: italic;
+  font-size: 20px;
+  color: var(--plata-claro);
+}
+.portada__bajar {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  margin-left: -20px;
+  color: var(--plata-claro);
+  animation: flotar 2.6s ease-in-out infinite;
+}
+@keyframes flotar { 50% { transform: translateY(6px); } }
+
+/* Estrellitas de cuatro puntas que titilan */
+.portada__estrellas { position: absolute; inset: 0; pointer-events: none; }
+.portada__estrellas i {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--t);
+  height: var(--t);
+  background: #E4E8F1;
+  clip-path: polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%);
+  animation: titilar 3.6s ease-in-out var(--d) infinite;
+}
+@keyframes titilar {
+  0%, 100% { opacity: .9; transform: scale(1); }
+  50% { opacity: .3; transform: scale(.7); }
+}
+
+/* Entrada de la portada al abrir el sobre */
+.sobre-cerrado .portada__arco > *:not(.portada__estrellas) { opacity: 0; transform: translateY(14px); }
+.portada__arco > * { transition: opacity 1.1s ease, transform 1.1s ease; }
+.portada__arco > :nth-child(2) { transition-delay: .9s; }
+.portada__arco > :nth-child(3) { transition-delay: 1.15s; }
+.portada__arco > :nth-child(4) { transition-delay: 1.3s; }
+.portada__arco > :nth-child(5) { transition-delay: 1.45s; }
+.portada__arco > :nth-child(n+6) { transition-delay: 1.65s; }
+
+/* ==========================================================================
+   Secciones y tarjetas
+   ========================================================================== */
+.seccion {
+  padding: 56px 16px;
+  text-align: center;
+}
+.seccion__etiqueta {
+  font-family: var(--fuente-sans);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: .32em;
+  padding-left: .32em;
+  text-transform: uppercase;
+  color: var(--plata-claro);
+}
+.seccion__titulo {
+  font-family: var(--fuente-script);
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 1.25;
+  margin: 4px auto 20px;
+  padding: 0 .15em;
+  max-width: 560px;
+}
+.seccion__nota {
+  margin: -6px auto 20px;
+  max-width: 420px;
+  font-style: italic;
+  font-size: 19px;
+  color: var(--plata-claro);
+}
+
+.tarjeta {
+  position: relative;
+  max-width: 440px;
+  margin: 0 auto;
+  padding: 34px 22px 30px;
+  border-radius: 18px;
+  background: var(--perla);
+  color: var(--tinta);
+  box-shadow: 0 18px 40px rgba(5, 12, 45, .35);
+}
+.tarjeta::before {
+  content: '';
+  position: absolute;
+  inset: 7px;
+  border: 1px solid #C6CCD9;
+  border-radius: 13px;
+  pointer-events: none;
+}
+.tarjeta__icono { width: 48px; height: 48px; margin: 0 auto 10px; color: var(--azul-rey); display: block; }
+.tarjeta__subtitulo {
+  font-family: var(--fuente-sans);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: .28em;
+  padding-left: .28em;
+  text-transform: uppercase;
+  color: var(--plata-oscuro);
+  margin-bottom: 6px;
+}
+.tarjeta__nombre {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--azul-rey);
+}
+.tarjeta__lista { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.tarjeta__hora {
+  font-family: var(--fuente-sans);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--plata-oscuro);
+}
+.tarjeta__lugar {
+  margin-top: 6px;
+  font-size: 27px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--azul-rey);
+}
+.tarjeta__direccion { margin-top: 8px; font-size: 19px; color: var(--tinta); }
+.tarjeta__texto { font-size: 21px; line-height: 1.45; color: var(--tinta); }
+.tarjeta--formulario { padding: 30px 18px 26px; }
+
+.adorno { display: block; width: 120px; height: 20px; margin: 0 auto 14px; color: var(--plata-oscuro); }
+.adorno--abajo { margin: 16px auto 0; }
+.adorno--chico { margin: 18px auto 16px; }
+
+.frase {
+  margin: 0;
+  font-style: italic;
+  font-size: 25px;
+  line-height: 1.45;
+  color: var(--azul-rey);
+}
+
+/* Botón (Cómo llegar, mesa de regalos) */
+.boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  margin-top: 20px;
+  padding: 10px 26px;
+  border-radius: 999px;
+  background: var(--azul-rey);
+  color: #fff;
+  font-family: var(--fuente-sans);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-decoration: none;
+  box-shadow: 0 6px 16px rgba(23, 54, 138, .3);
+  transition: background .2s ease, transform .2s ease;
+}
+.boton svg { width: 18px; height: 18px; }
+.boton:hover { background: #1F45A8; }
+.boton:active { transform: scale(.97); }
+.boton:focus-visible { outline: 3px solid var(--azul-brillo); outline-offset: 3px; }
+
+/* Muestra de tonos de azul reservados */
+.muestra-azul { display: flex; justify-content: center; gap: 10px; margin-top: 18px; }
+.muestra-azul i { width: 26px; height: 26px; border-radius: 50%; box-shadow: 0 0 0 2px #fff, 0 0 0 3px #C6CCD9; }
+.muestra-azul i:nth-child(1) { background: #A9C4F0; }
+.muestra-azul i:nth-child(2) { background: #4F7BD8; }
+.muestra-azul i:nth-child(3) { background: var(--azul-rey); }
+.muestra-azul i:nth-child(4) { background: var(--azul-noche); }
+
+/* ---------- Cuenta regresiva ---------- */
+.contador {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  max-width: 440px;
+  margin: 0 auto;
+}
+.contador__caja {
+  padding: 14px 2px 10px;
+  border: 1px solid rgba(214, 220, 232, .5);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, .07);
+}
+.contador__numero {
+  display: block;
+  font-size: 38px;
+  font-weight: 600;
+  line-height: 1;
+  color: #F4F6FA;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.contador__texto {
+  display: block;
+  margin-top: 6px;
+  font-family: var(--fuente-sans);
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--plata-claro);
+}
+.contador__fin { font-size: 28px; font-style: italic; color: #F4F6FA; }
+
+/* ---------- Galería ---------- */
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  max-width: 560px;
+  margin: 0 auto;
+}
+.galeria__foto {
+  position: relative;
+  padding: 6px;
+  border: 0;
+  border-radius: 14px;
+  background: linear-gradient(145deg, #F4F6FA, #AEB5C3 50%, #E6E9F0);
+  cursor: zoom-in;
+  aspect-ratio: 3 / 4;
+  box-shadow: 0 10px 24px rgba(5, 12, 45, .35);
+}
+.galeria__foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 9px;
+  background: #24418F;
+}
+.galeria__foto:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+.galeria__foto--ancha { grid-column: 1 / -1; aspect-ratio: 4 / 3; }
+
+.visor {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 56px 12px;
+  background: rgba(6, 13, 40, .94);
+}
+.visor__img { max-width: 100%; max-height: 100%; border-radius: 10px; box-shadow: 0 0 0 4px rgba(233,236,243,.7); object-fit: contain; }
+.visor__boton {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(233,236,243,.5);
+  border-radius: 50%;
+  background: rgba(14, 31, 87, .8);
+  color: #fff;
+  font-size: 30px;
+  line-height: 1;
+  cursor: pointer;
+}
+.visor__cerrar { top: 10px; right: 10px; }
+.visor__anterior { left: 8px; top: 50%; margin-top: -24px; }
+.visor__siguiente { right: 8px; top: 50%; margin-top: -24px; }
+.visor__contador {
+  position: absolute;
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  left: 0; right: 0;
+  font-family: var(--fuente-sans);
+  font-size: 14px;
+  letter-spacing: .15em;
+  color: var(--plata-claro);
+}
+
+/* ---------- Cierre y pie ---------- */
+.cierre { padding: 56px 16px 40px; text-align: center; }
+.cierre__luna { width: 74px; height: 74px; margin: 0 auto 18px; }
+.cierre__luna svg { width: 100%; height: 100%; }
+.cierre__frase { max-width: 400px; margin: 0 auto; font-style: italic; font-size: 23px; color: var(--plata-claro); }
+.cierre__firma { font-family: var(--fuente-script); font-size: 64px; line-height: 1.3; margin-top: 10px; padding: 0 .15em; display: inline-block; }
+
+.pie {
+  padding: 18px 16px calc(24px + env(safe-area-inset-bottom, 0px));
+  text-align: center;
+  font-family: var(--fuente-sans);
+  font-size: 12px;
+  letter-spacing: .1em;
+  color: rgba(233, 236, 243, .8);
+}
+.pie__marca { font-family: 'Pinyon Script', cursive; font-size: 19px; letter-spacing: 0; color: #F4F6FA; }
+
+/* ---------- Revelar al hacer scroll ---------- */
+.js .revelar { opacity: 0; transform: translateY(18px); transition: opacity .9s ease, transform .9s ease; }
+.js .revelar.visible { opacity: 1; transform: none; }
+
+/* ---------- Confirmación sobre la tarjeta perla ---------- */
+.tarjeta--formulario .conf { font-size: 18px; }
+
+/* ==========================================================================
+   Computadora
+   ========================================================================== */
+@media (min-width: 768px) {
+  body { font-size: 20px; }
+  .seccion { padding: 72px 24px; }
+  .seccion__titulo { font-size: 60px; }
+  .portada__arco { max-width: 460px; padding: 76px 28px 64px; border-radius: 50% 50% 16px 16px / 230px 230px 16px 16px; }
+  .portada__luna { width: 196px; height: 196px; }
+  .portada__xv { font-size: 96px; }
+  .portada__nombre { font-size: 88px; }
+  .tarjeta { padding: 40px 36px 34px; }
+  .contador__numero { font-size: 46px; }
+  .contador__texto { font-size: 12px; }
+  .galeria { grid-template-columns: repeat(3, 1fr); max-width: 760px; }
+  .galeria__foto--ancha { grid-column: auto; aspect-ratio: 3 / 4; }
+  #misa, #recepcion { padding-top: 56px; padding-bottom: 56px; }
+}
+
+/* ==========================================================================
+   Menos movimiento
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition-duration: .01ms !important;
+    transition-delay: 0s !important;
+    scroll-behavior: auto !important;
+  }
+  .js .revelar { opacity: 1; transform: none; }
+}

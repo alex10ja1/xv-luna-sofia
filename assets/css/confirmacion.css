@@ -1,0 +1,228 @@
+/* ==========================================================================
+   CONFIRMACION.CSS — Estilos del formulario de confirmación (Invitara)
+   --------------------------------------------------------------------------
+   Diseño neutro: toma los colores de las variables de cada invitación.
+   Si la invitación no las define, usa los colores de Invitara.
+     --color-principal       botones y acentos
+     --color-sobre-principal texto encima del color principal
+     --color-texto           texto
+     --color-texto-suave     notas y ayudas
+     --color-fondo-campo     fondo de los campos
+     --color-borde           borde de los campos
+     --color-error / --color-exito
+     --fuente-cuerpo         letra
+   ========================================================================== */
+
+.conf {
+  --conf-principal: var(--color-principal, #A44A5C);
+  --conf-sobre-principal: var(--color-sobre-principal, #FFFFFF);
+  --conf-texto: var(--color-texto, #3A2328);
+  --conf-suave: var(--color-texto-suave, #6B5458);
+  --conf-fondo-campo: var(--color-fondo-campo, #FFFFFF);
+  --conf-borde: var(--color-borde, rgba(58, 35, 40, 0.28));
+  --conf-error: var(--color-error, #B3261E);
+  --conf-exito: var(--color-exito, #2E7D4F);
+  --conf-radio: var(--radio-campo, 12px);
+
+  font-family: var(--fuente-cuerpo, inherit);
+  color: var(--conf-texto);
+  text-align: left;
+  line-height: 1.5;
+}
+
+.conf *, .conf *::before, .conf *::after { box-sizing: border-box; }
+.conf [hidden] { display: none !important; }
+
+.conf__pase {
+  margin: 0 0 1.25rem;
+  text-align: center;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--conf-principal);
+}
+
+.conf__aviso {
+  margin: 0 0 1.25rem;
+  padding: 0.75rem 1rem;
+  border-left: 3px solid var(--conf-principal);
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--conf-principal) 8%, transparent);
+  font-size: 0.95rem;
+}
+
+/* ---------- campos ---------- */
+.conf__form { margin: 0; }
+
+.conf__campo {
+  margin: 0 0 1.1rem;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+
+.conf__etiqueta {
+  display: block;
+  margin: 0 0 0.35rem;
+  padding: 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--conf-principal);
+}
+.conf__etiqueta--chica { font-size: 0.78rem; text-transform: none; letter-spacing: 0.02em; color: var(--conf-suave); }
+.conf__opcional { font-weight: 400; text-transform: none; letter-spacing: 0; color: var(--conf-suave); }
+
+.conf input[type="text"],
+.conf input[type="tel"],
+.conf select,
+.conf textarea {
+  display: block;
+  width: 100%;
+  min-height: 48px;
+  margin: 0;
+  padding: 0.7rem 0.9rem;
+  font: inherit;
+  font-size: 1rem; /* 16 px: evita que el iPhone haga zoom */
+  color: var(--conf-texto);
+  background: var(--conf-fondo-campo);
+  border: 1px solid var(--conf-borde);
+  border-radius: var(--conf-radio);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.conf textarea { min-height: 96px; resize: vertical; }
+.conf select:disabled { opacity: 0.75; }
+
+.conf input:focus-visible,
+.conf select:focus-visible,
+.conf textarea:focus-visible {
+  outline: none;
+  border-color: var(--conf-principal);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--conf-principal) 30%, transparent);
+}
+
+.conf__asistentes { display: grid; gap: 0.6rem; }
+.conf__asistente .conf__error { margin-top: 0.25rem; }
+
+/* ---------- Sí / No ---------- */
+.conf__opciones { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+.conf__opcion { position: relative; display: block; cursor: pointer; }
+.conf__opcion input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+.conf__opcion span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 56px;
+  padding: 0.6rem 0.75rem;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--conf-principal);
+  background: var(--conf-fondo-campo);
+  border: 1.5px solid var(--conf-principal);
+  border-radius: var(--conf-radio);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.conf__opcion:hover span { background: color-mix(in srgb, var(--conf-principal) 8%, var(--conf-fondo-campo)); }
+.conf__opcion input:checked + span { background: var(--conf-principal); color: var(--conf-sobre-principal); }
+.conf__opcion input:checked + span::before { content: "✓"; margin-right: 0.4rem; }
+.conf__opcion input:focus-visible + span { outline: 3px solid var(--conf-principal); outline-offset: 3px; }
+
+/* ---------- errores ---------- */
+.conf__error {
+  margin: 0.35rem 0 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--conf-error);
+}
+.conf__error::before { content: "⚠ "; }
+.conf__error--general { margin: 0 0 0.75rem; text-align: center; }
+.conf--con-error > input,
+.conf--con-error > select,
+.conf--con-error > textarea,
+.conf__asistente.conf--con-error input { border-color: var(--conf-error); border-width: 2px; }
+.conf--con-error .conf__opcion span { border-color: var(--conf-error); }
+
+/* ---------- campo trampa (invisible para personas) ---------- */
+.conf__trampa {
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* ---------- botones ---------- */
+.conf__boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 52px;
+  margin: 0.4rem 0 0;
+  padding: 0.75rem 1.5rem;
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--conf-sobre-principal);
+  background: var(--conf-principal);
+  border: 1.5px solid var(--conf-principal);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: filter 0.2s ease, transform 0.1s ease;
+}
+.conf__boton:hover { filter: brightness(1.08); }
+.conf__boton:active { transform: scale(0.98); }
+.conf__boton:focus-visible { outline: 3px solid var(--conf-principal); outline-offset: 3px; }
+.conf__boton:disabled { opacity: 0.65; cursor: progress; transform: none; }
+.conf__boton--secundario { background: transparent; color: var(--conf-principal); }
+
+.conf__privacidad {
+  margin: 0.6rem 0 0;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--conf-suave);
+}
+
+/* ---------- resultado (éxito, error, cerrado) ---------- */
+.conf__resultado {
+  padding: 1.25rem 1rem;
+  text-align: center;
+  border-radius: var(--conf-radio);
+  outline: none;
+}
+.conf__resultado p { margin: 0 0 0.75rem; }
+.conf__resultado-titulo { font-size: 1.15rem; font-weight: 600; }
+.conf__resultado--exito .conf__resultado-titulo { color: var(--conf-exito); }
+.conf__resultado--exito .conf__resultado-titulo::before { content: "✓"; display: block; font-size: 2rem; line-height: 1.2; }
+.conf__resultado--error .conf__resultado-titulo { color: var(--conf-error); }
+.conf__resultado--cerrado { font-size: 1.05rem; border: 1px dashed var(--conf-borde); }
+.conf__resultado--cerrado p { margin: 0; }
+.conf__nota { font-size: 0.85rem; color: var(--conf-suave); }
+.conf__acciones { display: grid; gap: 0.5rem; }
+
+.conf__estado {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (min-width: 560px) {
+  .conf__acciones { grid-template-columns: 1fr 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .conf *, .conf__boton { transition: none !important; }
+}
