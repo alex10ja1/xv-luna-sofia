@@ -1,3 +1,3 @@
 Fuentes incluidas en el repositorio (no dependen de servicios externos).
-Great Vibes, Cormorant Garamond, Jost y Pinyon Script: SIL Open Font License 1.1.
+Great Vibes, Cinzel, Cormorant Garamond, Jost y Pinyon Script: SIL Open Font License 1.1.
 Archivos obtenidos de @fontsource 5.1.0.
