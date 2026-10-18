@@ -1,5 +1,5 @@
 {
-  "_comentario": "Invitación de XV de Luna Sofía. Aquí van TODOS los datos que la clienta puede cambiar. Edita solo los valores (lo que está a la derecha de los dos puntos). No hace falta tocar el diseño.",
+  "_comentario": "Invitación de XV de Luna Sofía. Aquí van TODOS los textos y datos que la clienta puede cambiar. Edita solo los valores (lo que está a la derecha de los dos puntos). No hace falta tocar el diseño. En los textos, **así** se ve en negritas.",
 
   "portada": {
     "etiqueta": "Mis XV años",
@@ -9,22 +9,33 @@
     "ciudad": "Uruapan, Michoacán"
   },
 
+  "sobre": {
+    "para": "Tienes una invitación",
+    "accion": "Toca el sello para abrir"
+  },
+
   "frase": "Este día tan especial quiero compartirlo contigo, en presencia de Dios y de mi familia.",
 
   "cuentaRegresiva": {
     "_comentario": "Hora del centro de México (-06:00).",
+    "etiqueta": "Faltan",
+    "titulo": "Cuenta regresiva",
     "fechaISO": "2026-12-05T18:00:00-06:00",
-    "textoTerminada": "¡Hoy es el gran día!"
+    "textoTerminada": "¡Hoy es el gran día!",
+    "botonConfirmar": "Confirmar asistencia"
   },
 
   "familia": {
+    "etiqueta": "Con la bendición de",
     "titulo": "Mi mamá y mis padrinos",
     "etiquetaPadres": "Mi mamá",
     "padres": "Gisselle Granados",
+    "etiquetaPadrinos": "Mis padrinos",
     "padrinos": ["Martha Ofelia Pantoja", "Aaron A. Armas"]
   },
 
   "misa": {
+    "etiqueta": "Ceremonia religiosa",
     "titulo": "Misa",
     "lugar": "Parroquia San Pablo Apóstol",
     "direccion": "Paseo de la Cima 1A, Balcones",
@@ -33,49 +44,101 @@
   },
 
   "recepcion": {
+    "etiqueta": "Celebremos juntos",
     "titulo": "Recepción",
     "lugar": "Salón Los Viveros",
     "direccion": "Dr. Juan de Alvarado #65, Col. Viveros, Uruapan, Michoacán",
-    "hora": "7:30 pm",
+    "hora": "7:40 pm",
     "mapa": "https://www.google.com/maps/search/?api=1&query=Sal%C3%B3n+Los+Viveros%2C+Dr.+Juan+de+Alvarado+65%2C+Col.+Viveros%2C+Uruapan%2C+Michoac%C3%A1n"
   },
 
+  "botonMapa": "Cómo llegar",
+
+  "itinerario": {
+    "_comentario": "Íconos disponibles: iglesia, llegada, corona, vals, cena, estrella, musica, trofeo, luna.",
+    "etiqueta": "Programa de la noche",
+    "titulo": "Itinerario",
+    "momentos": [
+      { "hora": "6:00 pm",  "titulo": "Misa", "detalle": "", "icono": "iglesia" },
+      { "hora": "7:40 pm",  "titulo": "Recepción", "detalle": "", "icono": "llegada" },
+      { "hora": "8:15 pm",  "titulo": "Inicio del evento", "detalle": "Entrada de la quinceañera", "icono": "corona" },
+      { "hora": "8:30 pm",  "titulo": "Vals", "detalle": "Quinceañera, chambelanes y familia", "icono": "vals" },
+      { "hora": "9:10 pm",  "titulo": "Cena", "detalle": "", "icono": "cena" },
+      { "hora": "9:45 pm",  "titulo": "Baile sorpresa", "detalle": "", "icono": "estrella" },
+      { "hora": "10:00 pm", "titulo": "Animación y convivencia", "detalle": "", "icono": "musica" },
+      { "hora": "11:30 pm", "titulo": "Premiación sorpresa", "detalle": "", "icono": "trofeo" },
+      { "hora": "1:00 am",  "titulo": "Fin del evento", "detalle": "", "icono": "luna" }
+    ],
+    "cierre": "Gracias por ser parte de esta celebración"
+  },
+
   "vestimenta": {
+    "etiqueta": "Código de vestimenta",
     "codigo": "Formal elegante de noche",
     "nota": "El color azul, en todas sus tonalidades, está reservado para la quinceañera."
   },
 
+  "recomendaciones": {
+    "_comentario": "Íconos disponibles: sin-alcohol, sin-vape, menores, pase.",
+    "etiqueta": "Recomendaciones",
+    "titulo": "Para que todos disfrutemos",
+    "lista": [
+      { "icono": "sin-alcohol", "texto": "Te pedimos no ingresar con bebidas alcohólicas." },
+      { "icono": "sin-vape", "texto": "Evita ingresar con cigarros electrónicos (vapes)." },
+      { "icono": "menores", "texto": "No se permitirá el consumo de alcohol ni de cigarro electrónico a menores de edad." },
+      { "icono": "pase", "texto": "**Pase personal** · Agradecemos respetar el número de lugares asignados." }
+    ]
+  },
+
   "galeria": {
-    "_comentario": "PENDIENTE: fotos de la clienta (llegan el 19 de octubre). Mientras la lista esté vacía, la sección no se muestra. Ejemplo: { \"src\": \"fotos/foto-01.jpg\", \"alt\": \"Luna Sofía\" }",
+    "_comentario": "PENDIENTE: fotos de la sesión (llegan el miércoles 21 o el jueves 22 de octubre). Mientras la lista esté vacía se ven 6 marcos «Muy pronto». La primera foto es la grande (vertical). 'posicion' es opcional y mueve el recorte hacia la cara, por ejemplo \"50% 30%\". Ejemplo: { \"src\": \"fotos/foto-01.jpg\", \"alt\": \"Luna Sofía\", \"posicion\": \"50% 30%\" }",
+    "etiqueta": "Galería",
+    "titulo": "Mis XV en fotos",
+    "textoPronto": "Muy pronto, las fotos de mi sesión ✨",
     "fotos": []
   },
 
   "mesaRegalos": {
-    "_comentario": "PENDIENTE: tienda y número de evento. La sección aparece cuando 'tienda' y 'enlace' tengan valor.",
+    "_comentario": "PENDIENTE: ¿habrá tienda de mesa de regalos? El recuadro de la tienda solo aparece cuando 'tienda' y 'numeroEvento' tienen valor; el botón, cuando además hay 'enlace'.",
+    "etiqueta": "Un detalle",
+    "titulo": "Regalos",
+    "texto": "Tu presencia es mi mejor regalo. Si deseas obsequiarme algo, me encantaría que estuviera **inspirado en un recuerdo bonito que tengamos juntos**. 💙",
     "tienda": "",
     "numeroEvento": "",
     "enlace": "",
-    "texto": "Tu presencia es mi mejor regalo. Si deseas tener un detalle conmigo, aquí está mi mesa de regalos."
+    "textoBoton": "Ver mesa de regalos"
   },
 
   "musica": {
-    "_comentario": "PENDIENTE: audio de la clienta. Si el archivo no existe, el botón de música no aparece.",
     "archivo": "musica/cancion.mp3",
     "titulo": "El vals del amor"
   },
 
   "confirmacion": {
-    "_comentario": "maximoPersonas es PROVISIONAL (dato pendiente de la clienta). En modo real desde el 17 de octubre de 2026 (hoja Confirmaciones – XV Luna Sofía).",
+    "_comentario": "maximoPersonas es PROVISIONAL (dato pendiente de la clienta). En modo real desde el 17 de octubre de 2026 (hoja Confirmaciones – XV Luna Sofía). Si cambia el máximo o la fecha, cámbialos también en la pestaña Config de la hoja. En 'textoFaltan', {dias} se cambia por el número de días.",
+    "etiquetaSeccion": "Te espero",
+    "tituloSeccion": "Confirma tu asistencia",
+    "avisoFecha": "antes del 20 de noviembre",
+    "textoFaltan": "Faltan {dias} días para confirmar",
+    "textoFaltaUno": "Falta 1 día para confirmar",
+    "textoUltimoDia": "Hoy es el último día para confirmar",
+    "paseTitulo": "Pase personal e intransferible",
+    "paseTexto": "Tu invitación es válida únicamente para el número de personas que te indicó la familia.",
+    "paseCarino": "Con cariño te pedimos no llevar acompañantes adicionales. 💙",
     "modo": "real",
     "urlAppsScript": "https://script.google.com/macros/s/AKfycbx2AzjdIS7OaTFhtfYkoJvGtBj5_2_CPv60FXU8yiVpfR53SCX5rcajeGPyZh0h1cQY/exec",
     "fechaLimite": "2026-11-20",
     "maximoPersonas": 5,
     "textoPase": "Pase personal",
+    "etiquetaPersonas": "¿Cuántas personas de tu pase asistirán?",
+    "ayudaPersonas": "Según el número que te indicó la familia",
+    "mensajeCerrado": "Las confirmaciones cerraron el 20 de noviembre. Si tienes dudas, contacta a la familia.",
     "mensajeExito": "¡Gracias! Tu confirmación quedó registrada."
   },
 
   "cierre": {
-    "frase": "Gracias por ser parte de esta noche tan especial. ¡Te espero!",
-    "firma": "Luna Sofía"
+    "firma": "Luna Sofía",
+    "pie": "Invitación hecha por",
+    "marca": "Invitara"
   }
 }

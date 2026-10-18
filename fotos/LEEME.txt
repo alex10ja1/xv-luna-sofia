@@ -1,3 +1,5 @@
-Fotos de la galería (PENDIENTE: llegan el 19 de octubre de 2026).
-Nombres: foto-01.jpg, foto-02.jpg... Ancho máximo 1200 px, JPG.
-Agrégalas también en data/configuracion.json → galeria.fotos.
+Fotos de la galería (PENDIENTE: llegan el miércoles 21 o el jueves 22 de octubre de 2026).
+Nombres: foto-01.jpg, foto-02.jpg... Ancho máximo 1200 px, JPG de buena calidad.
+Agrégalas en data/configuracion.json → galeria.fotos (la primera es la grande, vertical).
+Con "posicion" (por ejemplo "50% 30%") se centra el recorte en la cara.
+Mientras la lista esté vacía se ven 6 marcos "Muy pronto".

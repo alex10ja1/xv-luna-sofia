@@ -73,6 +73,7 @@
 }
 .conf__etiqueta--chica { font-size: 0.78rem; text-transform: none; letter-spacing: 0.02em; color: var(--conf-suave); }
 .conf__opcional { font-weight: 400; text-transform: none; letter-spacing: 0; color: var(--conf-suave); }
+.conf__ayuda { margin: -0.15rem 0 0.45rem; font-size: 0.85rem; color: var(--conf-suave); }
 
 .conf input[type="text"],
 .conf input[type="tel"],

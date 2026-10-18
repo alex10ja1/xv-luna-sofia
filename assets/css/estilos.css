@@ -12,12 +12,15 @@
 @font-face { font-family: 'Cormorant Garamond'; src: url('../fuentes/cormorant-garamond-latin-400-italic.woff2') format('woff2'); font-weight: 400; font-style: italic; font-display: swap; }
 @font-face { font-family: 'Jost'; src: url('../fuentes/jost-latin-400-normal.woff2') format('woff2'); font-weight: 400; font-display: swap; }
 @font-face { font-family: 'Jost'; src: url('../fuentes/jost-latin-500-normal.woff2') format('woff2'); font-weight: 500 600; font-display: swap; }
+@font-face { font-family: 'Cinzel'; src: url('../fuentes/cinzel-latin-400-normal.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Cinzel'; src: url('../fuentes/cinzel-latin-500-normal.woff2') format('woff2'); font-weight: 500 700; font-display: swap; }
 @font-face { font-family: 'Pinyon Script'; src: url('../fuentes/pinyon-script-latin-400-normal.woff2') format('woff2'); font-weight: 400; font-display: swap; }
 
 :root {
   /* Paleta de la portada A */
-  --azul-noche: #0E1F57;
+  --azul-noche: #0C2160;
   --azul-rey: #17368A;
+  --azul-medio: #2147A6;
   --azul-brillo: #3D5FBF;
   --plata-claro: #E9ECF3;   /* texto sobre azul */
   --plata: #C3C9D6;
@@ -30,6 +33,7 @@
   --fuente-script: 'Great Vibes', 'Brush Script MT', cursive;
   --fuente-serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
   --fuente-sans: 'Jost', 'Segoe UI', system-ui, sans-serif;
+  --fuente-titulo: 'Cinzel', 'Times New Roman', serif;
 
   /* Confirmación (los lee confirmacion.css) */
   --color-principal: var(--azul-rey);
@@ -82,7 +86,7 @@ h1, h2, h3, p { margin: 0; }
     radial-gradient(1.3px 1.3px at 45% 32%, rgba(255,255,255,.5) 50%, transparent 51%),
     radial-gradient(1px 1px at 24% 40%, rgba(255,255,255,.45) 50%, transparent 51%),
     radial-gradient(1px 1px at 66% 54%, rgba(255,255,255,.45) 50%, transparent 51%),
-    radial-gradient(ellipse 90% 60% at 50% 20%, #2246A8 0%, transparent 70%),
+    radial-gradient(ellipse 90% 60% at 50% 20%, var(--azul-medio) 0%, transparent 70%),
     linear-gradient(180deg, var(--azul-rey) 0%, #13307D 45%, var(--azul-noche) 100%);
   background-size: 260px 260px, 310px 310px, 280px 280px, 240px 240px, 330px 330px, 290px 290px, 350px 350px, 270px 270px, 230px 230px, 300px 300px, 100% 100%, 100% 100%;
 }
@@ -303,12 +307,12 @@ h1, h2, h3, p { margin: 0; }
   color: var(--plata-claro);
 }
 .portada__xv {
-  font-family: var(--fuente-serif);
+  font-family: var(--fuente-titulo);
   font-weight: 500;
-  font-size: 84px;
-  line-height: 1;
+  font-size: 78px;
+  line-height: 1.05;
   margin-top: 8px;
-  letter-spacing: .04em;
+  letter-spacing: .02em;
 }
 .portada__nombre {
   font-family: var(--fuente-script);
@@ -517,8 +521,9 @@ h1, h2, h3, p { margin: 0; }
 }
 .contador__numero {
   display: block;
-  font-size: 38px;
-  font-weight: 600;
+  font-family: var(--fuente-titulo);
+  font-size: 32px;
+  font-weight: 500;
   line-height: 1;
   color: #F4F6FA;
   font-variant-numeric: lining-nums tabular-nums;
@@ -534,33 +539,56 @@ h1, h2, h3, p { margin: 0; }
 }
 .contador__fin { font-size: 28px; font-style: italic; color: #F4F6FA; }
 
-/* ---------- Galería ---------- */
+/* ---------- Galería (marcos "muy pronto" o fotos) ---------- */
 .galeria {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-  max-width: 560px;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+  max-width: 520px;
   margin: 0 auto;
 }
-.galeria__foto {
+.galeria__marco {
   position: relative;
-  padding: 6px;
-  border: 0;
-  border-radius: 14px;
-  background: linear-gradient(145deg, #F4F6FA, #AEB5C3 50%, #E6E9F0);
-  cursor: zoom-in;
-  aspect-ratio: 3 / 4;
-  box-shadow: 0 10px 24px rgba(5, 12, 45, .35);
+  overflow: hidden;
+  grid-column: span 2;
+  aspect-ratio: 1;
+  padding: 0;
+  border: 1px solid rgba(214, 220, 232, .75);
+  border-radius: 12px;
+  background: linear-gradient(155deg, var(--azul-medio) 0%, var(--azul-rey) 50%, var(--azul-noche) 100%);
+  box-shadow: inset 0 0 0 4px rgba(12, 33, 96, .55), inset 0 0 0 5px rgba(214, 220, 232, .35), 0 10px 22px rgba(5, 12, 45, .35);
 }
-.galeria__foto img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 9px;
-  background: #24418F;
+.galeria__marco:nth-child(2), .galeria__marco:nth-child(3) { grid-column: span 3; }
+.galeria__marco--grande { grid-column: 1 / -1; aspect-ratio: 4 / 5; }
+.galeria--muchas .galeria__marco:nth-child(n+7) { grid-column: span 2; }
+.galeria__luna {
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 34%; max-width: 64px;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  opacity: .85;
+  filter: drop-shadow(0 0 8px rgba(255,255,255,.25));
 }
-.galeria__foto:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
-.galeria__foto--ancha { grid-column: 1 / -1; aspect-ratio: 4 / 3; }
+.galeria__marco--grande .galeria__luna { width: 22%; max-width: 88px; }
+/* brillo que pasa despacio, como "cargando" */
+.galeria__marco--pronto::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,.16) 48%, rgba(255,255,255,.04) 56%, transparent 70%);
+  transform: translateX(-100%);
+  animation: brillo-marco 4.8s ease-in-out infinite;
+}
+.galeria__marco--pronto:nth-child(2)::after { animation-delay: .5s; }
+.galeria__marco--pronto:nth-child(3)::after { animation-delay: 1s; }
+.galeria__marco--pronto:nth-child(4)::after { animation-delay: 1.5s; }
+.galeria__marco--pronto:nth-child(5)::after { animation-delay: 2s; }
+.galeria__marco--pronto:nth-child(6)::after { animation-delay: 2.5s; }
+@keyframes brillo-marco { 0% { transform: translateX(-100%); } 60%, 100% { transform: translateX(100%); } }
+.galeria__marco--foto { cursor: zoom-in; padding: 5px; background: linear-gradient(145deg, #F4F6FA, #AEB5C3 50%, #E6E9F0); border: 0; }
+.galeria__marco--foto img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; border-radius: 8px; background: var(--azul-rey); }
+.galeria__marco--foto:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
 
 .visor {
   position: fixed;
@@ -602,7 +630,6 @@ h1, h2, h3, p { margin: 0; }
 .cierre { padding: 56px 16px 40px; text-align: center; }
 .cierre__luna { width: 74px; height: 74px; margin: 0 auto 18px; }
 .cierre__luna svg { width: 100%; height: 100%; }
-.cierre__frase { max-width: 400px; margin: 0 auto; font-style: italic; font-size: 23px; color: var(--plata-claro); }
 .cierre__firma { font-family: var(--fuente-script); font-size: 64px; line-height: 1.3; margin-top: 10px; padding: 0 .15em; display: inline-block; }
 
 .pie {
@@ -615,8 +642,203 @@ h1, h2, h3, p { margin: 0; }
 }
 .pie__marca { font-family: 'Pinyon Script', cursive; font-size: 19px; letter-spacing: 0; color: #F4F6FA; }
 
+/* ==========================================================================
+   Fondo flotando (como en la demo: suben despacio y se mecen)
+   ========================================================================== */
+.flotantes {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+.flotante {
+  position: absolute;
+  top: 100%;
+  width: var(--tam);
+  height: var(--tam);
+  will-change: transform;
+  animation: subir var(--subir) linear var(--retraso) infinite;
+}
+.flotante i {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: #DCE1EC;
+  opacity: var(--opacidad);
+  animation: mecer var(--mecer) ease-in-out infinite alternate;
+}
+.flotante svg { display: block; width: 100%; height: 100%; }
+.flotante--destello i { border-radius: 50%; background: radial-gradient(circle, #fff 0%, rgba(220, 226, 238, .7) 45%, transparent 72%); }
+@keyframes subir {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(0, calc(-100vh - 140px), 0); }
+}
+@keyframes mecer {
+  0%   { transform: translateX(-14px) rotate(-12deg); }
+  100% { transform: translateX(14px) rotate(12deg); }
+}
+
+/* ---------- Botón plateado (sobre azul) ---------- */
+.boton--plata {
+  margin-top: 26px;
+  background: linear-gradient(100deg, #DDE2EB, #FFFFFF 45%, #C9CFDB);
+  color: var(--azul-noche);
+  box-shadow: 0 8px 22px rgba(5, 12, 45, .4), inset 0 0 0 1px rgba(255,255,255,.8);
+}
+.boton--plata:hover { background: linear-gradient(100deg, #E8EBF2, #FFFFFF 45%, #D5DAE4); }
+.boton--plata:focus-visible { outline-color: #fff; }
+
+/* ---------- Itinerario ---------- */
+.itinerario {
+  position: relative;
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+}
+.itinerario::before {
+  content: '';
+  position: absolute;
+  left: 27px;
+  top: 10px;
+  bottom: 10px;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, rgba(214, 220, 232, .7) 6%, rgba(214, 220, 232, .7) 94%, transparent);
+}
+.itinerario__momento {
+  position: relative;
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 16px;
+  align-items: center;
+  padding: 10px 0;
+}
+.itinerario__icono {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, var(--azul-medio), var(--azul-rey) 60%, var(--azul-noche));
+  box-shadow: 0 0 0 1px rgba(214, 220, 232, .8), 0 0 0 4px rgba(12, 33, 96, .9), 0 0 0 5px rgba(214, 220, 232, .3), 0 6px 14px rgba(5, 12, 45, .4);
+  color: #E4E8F1;
+}
+.itinerario__icono svg { width: 30px; height: 30px; }
+.itinerario__hora {
+  font-family: var(--fuente-titulo);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: .12em;
+  color: var(--plata);
+  text-transform: uppercase;
+}
+.itinerario__titulo { font-size: 23px; font-weight: 600; line-height: 1.2; color: #F4F6FA; }
+.itinerario__detalle { font-size: 18px; font-style: italic; line-height: 1.35; color: var(--plata-claro); }
+.itinerario__gracias {
+  font-family: var(--fuente-script);
+  font-size: 38px;
+  line-height: 1.3;
+  max-width: 420px;
+  margin: 26px auto 0;
+  padding: 0 .15em;
+}
+
+/* ---------- Vestimenta ---------- */
+.vestimenta__azul {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 6px;
+  padding: 14px 16px;
+  border: 1px solid #B9C1D6;
+  border-radius: 14px;
+  background: #EAF0FB;
+  text-align: left;
+}
+.vestimenta__azul p { font-size: 19px; font-weight: 600; line-height: 1.35; color: var(--azul-noche); }
+.vestimenta__circulo {
+  flex: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #6C8FE0, var(--azul-rey) 60%, var(--azul-noche));
+  box-shadow: 0 0 0 2px #fff, 0 0 0 3px #9AA6C2;
+}
+
+/* ---------- Recomendaciones ---------- */
+.recomendaciones { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; text-align: left; }
+.recomendaciones__item { display: grid; grid-template-columns: 46px 1fr; gap: 14px; align-items: center; }
+.recomendaciones__item + .recomendaciones__item { padding-top: 16px; border-top: 1px solid #DDE2EC; }
+.recomendaciones__icono {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #FFFFFF, #E3E7EF);
+  box-shadow: 0 0 0 1px #AEB5C3, 0 3px 8px rgba(5, 12, 45, .12);
+  color: var(--plata-oscuro);
+}
+.recomendaciones__icono svg { width: 28px; height: 28px; }
+.recomendaciones__item p { font-size: 19px; line-height: 1.4; color: var(--tinta); }
+.recomendaciones__item strong { color: var(--azul-rey); }
+
+/* ---------- Regalos ---------- */
+.tarjeta__texto strong { color: var(--azul-rey); font-weight: 600; }
+.regalos__tienda { margin-top: 18px; padding-top: 16px; border-top: 1px solid #DDE2EC; }
+
+/* ---------- Confirmación: aviso, días y pase ---------- */
+.confirmar__fecha {
+  display: block;
+  margin-top: 2px;
+  font-family: var(--fuente-serif);
+  font-size: 25px;
+  font-weight: 600;
+  line-height: 1.3;
+  -webkit-text-fill-color: #F4F6FA;
+  color: #F4F6FA;
+}
+.confirmar__faltan {
+  display: table;
+  margin: -6px auto 22px;
+  padding: 6px 18px;
+  border: 1px solid rgba(214, 220, 232, .6);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .08);
+  font-family: var(--fuente-sans);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: .08em;
+  color: #F4F6FA;
+}
+.confirmar__faltan--hoy { background: rgba(255, 255, 255, .18); border-color: #fff; }
+.pase {
+  position: relative;
+  max-width: 440px;
+  margin: 0 auto 22px;
+  padding: 24px 20px 22px;
+  border: 1.5px solid #C9CFDB;
+  border-radius: 18px;
+  background: #10296E;
+  box-shadow: 0 12px 28px rgba(5, 12, 45, .35);
+}
+.pase::before {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  border: 1px solid rgba(214, 220, 232, .35);
+  border-radius: 13px;
+  pointer-events: none;
+}
+.pase__icono { display: block; width: 46px; height: 46px; margin: 0 auto 6px; color: #E4E8F1; }
+.pase__titulo { font-family: var(--fuente-titulo); font-size: 18px; font-weight: 500; letter-spacing: .06em; line-height: 1.3; color: #F4F6FA; }
+.pase__texto { margin-top: 8px; font-size: 19px; line-height: 1.45; color: var(--plata-claro); }
+.pase__texto--carino { font-style: italic; }
+
 /* ---------- Revelar al hacer scroll ---------- */
-.js .revelar { opacity: 0; transform: translateY(18px); transition: opacity .9s ease, transform .9s ease; }
+.js .revelar { opacity: 0; transform: translateY(24px); transition: opacity 1s ease, transform 1s cubic-bezier(.22, .8, .3, 1); }
 .js .revelar.visible { opacity: 1; transform: none; }
 
 /* ---------- Confirmación sobre la tarjeta perla ---------- */
@@ -631,13 +853,15 @@ h1, h2, h3, p { margin: 0; }
   .seccion__titulo { font-size: 60px; }
   .portada__arco { max-width: 460px; padding: 76px 28px 64px; border-radius: 50% 50% 16px 16px / 230px 230px 16px 16px; }
   .portada__luna { width: 196px; height: 196px; }
-  .portada__xv { font-size: 96px; }
+  .portada__xv { font-size: 90px; }
   .portada__nombre { font-size: 88px; }
   .tarjeta { padding: 40px 36px 34px; }
-  .contador__numero { font-size: 46px; }
+  .contador__numero { font-size: 42px; }
   .contador__texto { font-size: 12px; }
-  .galeria { grid-template-columns: repeat(3, 1fr); max-width: 760px; }
-  .galeria__foto--ancha { grid-column: auto; aspect-ratio: 3 / 4; }
+  .galeria { grid-template-columns: repeat(3, 1fr); max-width: 660px; gap: 14px; }
+  .galeria__marco, .galeria__marco:nth-child(2), .galeria__marco:nth-child(3), .galeria--muchas .galeria__marco:nth-child(n+7) { grid-column: span 1; }
+  .galeria__marco--grande { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; }
+  .itinerario__titulo { font-size: 25px; }
   #misa, #recepcion { padding-top: 56px; padding-bottom: 56px; }
 }
 
@@ -652,4 +876,6 @@ h1, h2, h3, p { margin: 0; }
     scroll-behavior: auto !important;
   }
   .js .revelar { opacity: 1; transform: none; }
+  .flotante { animation: none !important; transform: translateY(var(--quieto, -50vh)); }
+  .galeria__marco--pronto::after { display: none; }
 }

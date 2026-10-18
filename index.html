@@ -6,15 +6,17 @@
   <title>Mis XV años · Luna Sofía</title>
   <meta name="robots" content="noindex, nofollow">
   <meta name="description" content="Estás invitado a celebrar conmigo · Sábado 5 de diciembre de 2026">
-  <meta name="theme-color" content="#0E1F57">
+  <meta name="theme-color" content="#0C2160">
 
   <!-- Vista previa al compartir (WhatsApp / Facebook) -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Mis XV años · Luna Sofía">
   <meta property="og:description" content="Estás invitado a celebrar conmigo · Sábado 5 de diciembre de 2026">
-  <meta property="og:image" content="https://alex10ja1.github.io/xv-luna-sofia/vista-previa.jpg">
+  <meta property="og:image" content="https://alex10ja1.github.io/xv-luna-sofia/og-imagen.jpg">
+  <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Luna Sofía · Mis XV años · 5 de diciembre">
   <meta property="og:url" content="https://alex10ja1.github.io/xv-luna-sofia/">
   <meta property="og:locale" content="es_MX">
   <meta name="twitter:card" content="summary_large_image">
@@ -22,18 +24,21 @@
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
   <link rel="preload" href="assets/fuentes/great-vibes-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fuentes/cormorant-garamond-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/estilos.css?v=1">
-  <link rel="stylesheet" href="assets/css/confirmacion.css?v=1">
+  <link rel="preload" href="assets/fuentes/cinzel-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/estilos.css?v=2">
+  <link rel="stylesheet" href="assets/css/confirmacion.css?v=2">
 </head>
 <body class="sobre-cerrado">
 
   <!-- Cielo: fondo fijo con estrellitas -->
   <div class="cielo" aria-hidden="true"></div>
+  <!-- Fondo flotando: lunitas, estrellas y destellos (los crea invitacion.js) -->
+  <div class="flotantes" id="flotantes" aria-hidden="true"></div>
 
   <!-- ============== 1. SOBRE DE APERTURA ============== -->
   <div class="sobre" id="sobre" role="dialog" aria-modal="true" aria-label="Invitación cerrada">
     <div class="sobre__destellos" aria-hidden="true"></div>
-    <p class="sobre__para">Tienes una invitación</p>
+    <p class="sobre__para" data-config="sobre.para">Tienes una invitación</p>
     <button class="sobre__cuerpo" id="abrir-sobre" type="button" aria-label="Abrir la invitación">
       <span class="sobre__fondo" aria-hidden="true"></span>
       <span class="sobre__solapa" aria-hidden="true"></span>
@@ -41,8 +46,8 @@
         <svg viewBox="0 0 64 64"><use href="#icono-luna"/></svg>
       </span>
     </button>
-    <p class="sobre__nombre">Luna Sofía</p>
-    <p class="sobre__accion">Toca el sello para abrir</p>
+    <p class="sobre__nombre" data-config="portada.nombre">Luna Sofía</p>
+    <p class="sobre__accion" data-config="sobre.accion">Toca el sello para abrir</p>
   </div>
 
   <!-- Botón de música (solo aparece si existe musica/cancion.mp3) -->
@@ -101,8 +106,8 @@
 
     <!-- ============== 4. CUENTA REGRESIVA ============== -->
     <section class="seccion" id="cuenta-regresiva" aria-labelledby="titulo-cuenta">
-      <p class="seccion__etiqueta revelar">Faltan</p>
-      <h2 class="seccion__titulo plata revelar" id="titulo-cuenta">Cuenta regresiva</h2>
+      <p class="seccion__etiqueta revelar" data-config="cuentaRegresiva.etiqueta">Faltan</p>
+      <h2 class="seccion__titulo plata revelar" id="titulo-cuenta" data-config="cuentaRegresiva.titulo">Cuenta regresiva</h2>
       <div class="contador revelar" id="contador" role="timer" aria-live="off">
         <div class="contador__caja"><span class="contador__numero" id="c-dias">--</span><span class="contador__texto">días</span></div>
         <div class="contador__caja"><span class="contador__numero" id="c-horas">--</span><span class="contador__texto">horas</span></div>
@@ -110,17 +115,22 @@
         <div class="contador__caja"><span class="contador__numero" id="c-segundos">--</span><span class="contador__texto">segundos</span></div>
       </div>
       <p class="contador__fin" id="contador-fin" data-config="cuentaRegresiva.textoTerminada" hidden>¡Hoy es el gran día!</p>
+      <div class="revelar">
+        <a class="boton boton--plata" id="boton-ir-confirmar" href="#confirmacion">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icono-sobre"/></svg><span data-config="cuentaRegresiva.botonConfirmar">Confirmar asistencia</span>
+        </a>
+      </div>
     </section>
 
-    <!-- ============== 5. MIS PADRES Y PADRINOS ============== -->
+    <!-- ============== 5. MI MAMÁ Y MIS PADRINOS ============== -->
     <section class="seccion" id="familia" aria-labelledby="titulo-familia">
-      <p class="seccion__etiqueta revelar">Con la bendición de</p>
+      <p class="seccion__etiqueta revelar" data-config="familia.etiqueta">Con la bendición de</p>
       <h2 class="seccion__titulo plata revelar" id="titulo-familia" data-config="familia.titulo">Mi mamá y mis padrinos</h2>
       <div class="tarjeta revelar">
         <h3 class="tarjeta__subtitulo" data-config="familia.etiquetaPadres">Mi mamá</h3>
         <p class="tarjeta__nombre" data-config="familia.padres">Gisselle Granados</p>
         <svg class="adorno adorno--chico" viewBox="0 0 120 20" aria-hidden="true"><use href="#adorno-linea"/></svg>
-        <h3 class="tarjeta__subtitulo">Mis padrinos</h3>
+        <h3 class="tarjeta__subtitulo" data-config="familia.etiquetaPadrinos">Mis padrinos</h3>
         <ul class="tarjeta__lista" id="lista-padrinos">
           <li class="tarjeta__nombre">Martha Ofelia Pantoja</li>
           <li class="tarjeta__nombre">Aaron A. Armas</li>
@@ -130,82 +140,112 @@
 
     <!-- ============== 6. MISA ============== -->
     <section class="seccion" id="misa" aria-labelledby="titulo-misa">
-      <p class="seccion__etiqueta revelar">Ceremonia religiosa</p>
+      <p class="seccion__etiqueta revelar" data-config="misa.etiqueta">Ceremonia religiosa</p>
       <h2 class="seccion__titulo plata revelar" id="titulo-misa" data-config="misa.titulo">Misa</h2>
       <div class="tarjeta tarjeta--lugar revelar">
         <svg class="tarjeta__icono" viewBox="0 0 48 48" aria-hidden="true"><use href="#icono-iglesia"/></svg>
         <p class="tarjeta__hora" data-config="misa.hora">6:00 pm</p>
         <h3 class="tarjeta__lugar" data-config="misa.lugar">Parroquia San Pablo Apóstol</h3>
         <p class="tarjeta__direccion" data-config="misa.direccion">Paseo de la Cima 1A, Balcones</p>
-        <a class="boton" data-config="misa.mapa" data-config-attr="href" href="#" target="_blank" rel="noopener noreferrer">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icono-mapa"/></svg>Cómo llegar
+        <a class="boton" id="mapa-misa" data-config="misa.mapa" data-config-attr="href" href="#" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icono-mapa"/></svg><span data-config="botonMapa">Cómo llegar</span>
         </a>
       </div>
     </section>
 
-    <!-- ============== 7. RECEPCIÓN ============== -->
+    <!-- ============== 6b. RECEPCIÓN ============== -->
     <section class="seccion" id="recepcion" aria-labelledby="titulo-recepcion">
-      <p class="seccion__etiqueta revelar">Celebremos juntos</p>
+      <p class="seccion__etiqueta revelar" data-config="recepcion.etiqueta">Celebremos juntos</p>
       <h2 class="seccion__titulo plata revelar" id="titulo-recepcion" data-config="recepcion.titulo">Recepción</h2>
       <div class="tarjeta tarjeta--lugar revelar">
         <svg class="tarjeta__icono" viewBox="0 0 48 48" aria-hidden="true"><use href="#icono-copas"/></svg>
-        <p class="tarjeta__hora" data-config="recepcion.hora">7:30 pm</p>
+        <p class="tarjeta__hora" data-config="recepcion.hora">7:40 pm</p>
         <h3 class="tarjeta__lugar" data-config="recepcion.lugar">Salón Los Viveros</h3>
         <p class="tarjeta__direccion" data-config="recepcion.direccion">Dr. Juan de Alvarado #65, Col. Viveros, Uruapan, Michoacán</p>
-        <a class="boton" data-config="recepcion.mapa" data-config-attr="href" href="#" target="_blank" rel="noopener noreferrer">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icono-mapa"/></svg>Cómo llegar
+        <a class="boton" id="mapa-recepcion" data-config="recepcion.mapa" data-config-attr="href" href="#" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icono-mapa"/></svg><span data-config="botonMapa">Cómo llegar</span>
         </a>
       </div>
+    </section>
+
+    <!-- ============== 7. ITINERARIO ============== -->
+    <section class="seccion" id="itinerario" aria-labelledby="titulo-itinerario">
+      <p class="seccion__etiqueta revelar" data-config="itinerario.etiqueta">Programa de la noche</p>
+      <h2 class="seccion__titulo plata revelar" id="titulo-itinerario" data-config="itinerario.titulo">Itinerario</h2>
+      <ol class="itinerario" id="lista-itinerario"></ol>
+      <p class="itinerario__gracias plata revelar" data-config="itinerario.cierre">Gracias por ser parte de esta celebración</p>
     </section>
 
     <!-- ============== 8. CÓDIGO DE VESTIMENTA ============== -->
     <section class="seccion" id="vestimenta" aria-labelledby="titulo-vestimenta">
-      <p class="seccion__etiqueta revelar">Código de vestimenta</p>
+      <p class="seccion__etiqueta revelar" data-config="vestimenta.etiqueta">Código de vestimenta</p>
       <h2 class="seccion__titulo plata revelar" id="titulo-vestimenta" data-config="vestimenta.codigo">Formal elegante de noche</h2>
       <div class="tarjeta revelar">
         <svg class="tarjeta__icono" viewBox="0 0 48 48" aria-hidden="true"><use href="#icono-vestido"/></svg>
-        <p class="tarjeta__texto" data-config="vestimenta.nota">El color azul, en todas sus tonalidades, está reservado para la quinceañera.</p>
+        <div class="vestimenta__azul">
+          <span class="vestimenta__circulo" aria-hidden="true"></span>
+          <p data-config="vestimenta.nota">El color azul, en todas sus tonalidades, está reservado para la quinceañera.</p>
+        </div>
         <div class="muestra-azul" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
       </div>
     </section>
 
-    <!-- ============== 9. GALERÍA (oculta hasta tener fotos) ============== -->
-    <section class="seccion" id="galeria" aria-labelledby="titulo-galeria" hidden>
-      <p class="seccion__etiqueta revelar">Momentos</p>
-      <h2 class="seccion__titulo plata revelar" id="titulo-galeria">Mi galería</h2>
-      <div class="galeria" id="galeria-fotos"></div>
-    </section>
-
-    <!-- ============== 10. MESA DE REGALOS (oculta hasta tener datos) ============== -->
-    <section class="seccion" id="regalos" aria-labelledby="titulo-regalos" hidden>
-      <p class="seccion__etiqueta revelar">Un detalle</p>
-      <h2 class="seccion__titulo plata revelar" id="titulo-regalos">Mesa de regalos</h2>
+    <!-- ============== 9. PARA QUE TODOS DISFRUTEMOS ============== -->
+    <section class="seccion" id="recomendaciones" aria-labelledby="titulo-recomendaciones">
+      <p class="seccion__etiqueta revelar" data-config="recomendaciones.etiqueta">Recomendaciones</p>
+      <h2 class="seccion__titulo plata revelar" id="titulo-recomendaciones" data-config="recomendaciones.titulo">Para que todos disfrutemos</h2>
       <div class="tarjeta revelar">
-        <svg class="tarjeta__icono" viewBox="0 0 48 48" aria-hidden="true"><use href="#icono-regalo"/></svg>
-        <p class="tarjeta__texto" data-config="mesaRegalos.texto"></p>
-        <h3 class="tarjeta__lugar" data-config="mesaRegalos.tienda"></h3>
-        <p class="tarjeta__direccion" id="regalos-evento" hidden>Número de evento: <strong data-config="mesaRegalos.numeroEvento"></strong></p>
-        <a class="boton" id="regalos-enlace" href="#" target="_blank" rel="noopener noreferrer">Ver mesa de regalos</a>
+        <ul class="recomendaciones" id="lista-recomendaciones"></ul>
       </div>
     </section>
 
-    <!-- ============== 11. CONFIRMA TU ASISTENCIA ============== -->
+    <!-- ============== 10. GALERÍA ============== -->
+    <section class="seccion" id="galeria" aria-labelledby="titulo-galeria">
+      <p class="seccion__etiqueta revelar" data-config="galeria.etiqueta">Galería</p>
+      <h2 class="seccion__titulo plata revelar" id="titulo-galeria" data-config="galeria.titulo">Mis XV en fotos</h2>
+      <p class="seccion__nota revelar" id="galeria-pronto" data-config="galeria.textoPronto">Muy pronto, las fotos de mi sesión ✨</p>
+      <div class="galeria revelar" id="galeria-fotos"></div>
+    </section>
+
+    <!-- ============== 11. REGALOS ============== -->
+    <section class="seccion" id="regalos" aria-labelledby="titulo-regalos">
+      <p class="seccion__etiqueta revelar" data-config="mesaRegalos.etiqueta">Un detalle</p>
+      <h2 class="seccion__titulo plata revelar" id="titulo-regalos" data-config="mesaRegalos.titulo">Regalos</h2>
+      <div class="tarjeta revelar">
+        <svg class="tarjeta__icono" viewBox="0 0 48 48" aria-hidden="true"><use href="#icono-regalo"/></svg>
+        <p class="tarjeta__texto" data-config="mesaRegalos.texto" data-config-formato="rico">Tu presencia es mi mejor regalo.</p>
+        <div class="regalos__tienda" id="regalos-tienda" hidden>
+          <h3 class="tarjeta__lugar" data-config="mesaRegalos.tienda"></h3>
+          <p class="tarjeta__direccion">Número de evento: <strong data-config="mesaRegalos.numeroEvento"></strong></p>
+          <a class="boton" id="regalos-enlace" href="#" target="_blank" rel="noopener noreferrer" hidden><span data-config="mesaRegalos.textoBoton">Ver mesa de regalos</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== 12. CONFIRMA TU ASISTENCIA ============== -->
     <section class="seccion" id="confirmacion" aria-labelledby="titulo-confirmacion">
-      <p class="seccion__etiqueta revelar">Te espero</p>
-      <h2 class="seccion__titulo plata revelar" id="titulo-confirmacion">Confirma tu asistencia</h2>
-      <p class="seccion__nota revelar" id="nota-fecha-limite">Por favor confirma antes del 20 de noviembre.</p>
+      <p class="seccion__etiqueta revelar" data-config="confirmacion.etiquetaSeccion">Te espero</p>
+      <h2 class="seccion__titulo plata revelar" id="titulo-confirmacion"><span data-config="confirmacion.tituloSeccion">Confirma tu asistencia</span> <span class="confirmar__fecha" id="aviso-fecha" data-config="confirmacion.avisoFecha">antes del 20 de noviembre</span></h2>
+      <p class="confirmar__faltan revelar" id="confirmar-faltan" hidden></p>
+
+      <div class="pase revelar" id="pase-personal">
+        <svg class="pase__icono" viewBox="0 0 48 48" aria-hidden="true"><use href="#icono-boleto"/></svg>
+        <p class="pase__titulo" data-config="confirmacion.paseTitulo">Pase personal e intransferible</p>
+        <p class="pase__texto" data-config="confirmacion.paseTexto">Tu invitación es válida únicamente para el número de personas que te indicó la familia.</p>
+        <p class="pase__texto pase__texto--carino" data-config="confirmacion.paseCarino">Con cariño te pedimos no llevar acompañantes adicionales. 💙</p>
+      </div>
+
       <div class="tarjeta tarjeta--formulario revelar" data-confirmacion-formulario></div>
     </section>
 
-    <!-- ============== 12. CIERRE ============== -->
-    <section class="cierre" id="cierre" aria-label="Agradecimiento">
-      <div class="cierre__luna" aria-hidden="true"><svg viewBox="0 0 64 64"><use href="#icono-luna"/></svg></div>
-      <p class="cierre__frase revelar" data-config="cierre.frase">Gracias por ser parte de esta noche tan especial. ¡Te espero!</p>
+    <!-- ============== 13. CIERRE ============== -->
+    <section class="cierre" id="cierre" aria-label="Despedida">
+      <div class="cierre__luna revelar" aria-hidden="true"><svg viewBox="0 0 64 64"><use href="#icono-luna"/></svg></div>
       <p class="cierre__firma plata revelar" data-config="cierre.firma">Luna Sofía</p>
     </section>
   </main>
 
-  <footer class="pie">Invitación hecha por <span class="pie__marca">Invitara</span></footer>
+  <footer class="pie"><span data-config="cierre.pie">Invitación hecha por</span> <span class="pie__marca" data-config="cierre.marca">Invitara</span></footer>
 
   <!-- Visor de fotos -->
   <div class="visor" id="visor" role="dialog" aria-modal="true" aria-label="Foto ampliada" hidden>
@@ -233,6 +273,12 @@
       <symbol id="icono-luna" viewBox="0 0 64 64">
         <circle cx="30" cy="32" r="26" fill="url(#grad-plata)" mask="url(#mascara-luna)"/>
       </symbol>
+      <symbol id="luna-trazo" viewBox="0 0 24 24">
+        <path d="M15.5 3.5A8.8 8.8 0 1 0 20.5 17 7.2 7.2 0 0 1 15.5 3.5z" fill="currentColor"/>
+      </symbol>
+      <symbol id="estrella-4" viewBox="0 0 24 24">
+        <path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z" fill="currentColor"/>
+      </symbol>
       <symbol id="adorno-linea" viewBox="0 0 120 20">
         <path d="M4 10h44M72 10h44" stroke="currentColor" stroke-width=".8" stroke-linecap="round"/>
         <path d="M60 2l1.6 6.4L68 10l-6.4 1.6L60 18l-1.6-6.4L52 10l6.4-1.6z" fill="currentColor"/>
@@ -240,6 +286,9 @@
       <symbol id="icono-mapa" viewBox="0 0 24 24">
         <path d="M12 21s-6.5-6.1-6.5-11A6.5 6.5 0 0 1 18.5 10c0 4.9-6.5 11-6.5 11z" fill="none" stroke="currentColor" stroke-width="1.7"/>
         <circle cx="12" cy="10" r="2.3" fill="currentColor"/>
+      </symbol>
+      <symbol id="icono-sobre" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="13" rx="1.5"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/></g>
       </symbol>
       <symbol id="icono-iglesia" viewBox="0 0 48 48">
         <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round">
@@ -249,6 +298,63 @@
           <path d="M8 42V28l8-6M40 42V28l-8-6"/>
           <path d="M21 42v-7a3 3 0 0 1 6 0v7"/>
           <path d="M5 42h38"/>
+        </g>
+      </symbol>
+      <symbol id="icono-llegada" viewBox="0 0 48 48">
+        <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M13 42V12a10 10 0 0 1 20 0v30"/>
+          <path d="M18 42V14a5 5 0 0 1 10 0v28"/>
+          <path d="M7 42h34"/>
+          <circle cx="25" cy="29" r="1" fill="currentColor"/>
+          <path d="M39 8l.8 2.2L42 11l-2.2.8L39 14l-.8-2.2L36 11l2.2-.8z" fill="currentColor" stroke="none"/>
+        </g>
+      </symbol>
+      <symbol id="icono-corona" viewBox="0 0 48 48">
+        <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round">
+          <path d="M8 34L5 15l10 8 9-13 9 13 10-8-3 19z"/>
+          <path d="M9 39h30"/>
+          <circle cx="24" cy="8" r="2"/><circle cx="5" cy="13" r="1.6"/><circle cx="43" cy="13" r="1.6"/>
+          <path d="M24 26l2 3-2 3-2-3z"/>
+        </g>
+      </symbol>
+      <symbol id="icono-vals" viewBox="0 0 48 48">
+        <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="18" cy="8" r="3.2"/><circle cx="30" cy="9.5" r="3"/>
+          <path d="M18 12v12l-3 18M18 24l3 18"/>
+          <path d="M18 15l7 2 5-2"/>
+          <path d="M30 13l-1.5 6"/>
+          <path d="M28.5 19c-4 7-6.5 15-7 23h17c-1.5-8-4.5-16-10-23z"/>
+        </g>
+      </symbol>
+      <symbol id="icono-cena" viewBox="0 0 48 48">
+        <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 6v10a4 4 0 0 0 8 0V6M16 6v36M16 20v22"/>
+          <path d="M34 42V6c-4 3-6 9-6 16h6"/>
+        </g>
+      </symbol>
+      <symbol id="icono-estrella" viewBox="0 0 48 48">
+        <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round">
+          <path d="M24 5l5.6 12.2 13.4 1.5-10 9.1 2.8 13.2L24 34.3 12.2 41l2.8-13.2-10-9.1 13.4-1.5z"/>
+        </g>
+      </symbol>
+      <symbol id="icono-musica" viewBox="0 0 48 48">
+        <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round">
+          <path d="M18 36V10l22-4v26"/>
+          <ellipse cx="13" cy="36" rx="5" ry="4"/><ellipse cx="35" cy="32" rx="5" ry="4"/>
+          <path d="M18 16l22-4"/>
+        </g>
+      </symbol>
+      <symbol id="icono-trofeo" viewBox="0 0 48 48">
+        <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M15 6h18v10a9 9 0 0 1-18 0z"/>
+          <path d="M15 10H8c0 6 3 9 7 9.5M33 10h7c0 6-3 9-7 9.5"/>
+          <path d="M24 25v8M17 42h14l-2-9H19z"/>
+        </g>
+      </symbol>
+      <symbol id="icono-luna-linea" viewBox="0 0 48 48">
+        <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round">
+          <path d="M30 6A17 17 0 1 0 42 33 14 14 0 0 1 30 6z"/>
+          <path d="M38 8l.9 2.6 2.6.9-2.6.9L38 15l-.9-2.6-2.6-.9 2.6-.9z" fill="currentColor" stroke="none"/>
         </g>
       </symbol>
       <symbol id="icono-copas" viewBox="0 0 48 48">
@@ -272,11 +378,43 @@
           <path d="M24 18c-3-6-10-8-10-3s7 3 10 3c3 0 10 2 10-3s-7-3-10 3z"/>
         </g>
       </symbol>
+      <symbol id="icono-sin-alcohol" viewBox="0 0 48 48">
+        <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 10h12l-1 10a5 5 0 0 1-10 0zM22 25v11M17 36h10"/>
+          <path d="M31 14l3-7M33 20h6"/>
+          <circle cx="24" cy="24" r="20"/>
+          <path d="M10 38L38 10"/>
+        </g>
+      </symbol>
+      <symbol id="icono-sin-vape" viewBox="0 0 48 48">
+        <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="11" y="26" width="24" height="6" rx="3"/>
+          <path d="M35 29h3"/>
+          <path d="M17 22c0-3 3-3 3-6s-3-3-3-6M23 22c0-3 3-3 3-6"/>
+          <circle cx="24" cy="24" r="20"/>
+          <path d="M10 38L38 10"/>
+        </g>
+      </symbol>
+      <symbol id="icono-menores" viewBox="0 0 48 48">
+        <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M24 4l16 6v12c0 10-7 18-16 22-9-4-16-12-16-22V10z"/>
+          <path d="M14.5 21.5l2.5-1.5v12"/>
+          <circle cx="24" cy="22.8" r="2.8"/><circle cx="24" cy="29" r="3.2"/>
+          <path d="M33.5 23v6M30.5 26h6"/>
+        </g>
+      </symbol>
+      <symbol id="icono-boleto" viewBox="0 0 48 48">
+        <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round">
+          <path d="M5 14h38v6a4 4 0 0 0 0 8v6H5v-6a4 4 0 0 0 0-8z"/>
+          <path d="M32 14v20" stroke-dasharray="2 3"/>
+          <path d="M18 19l1.6 3.3 3.6.5-2.6 2.5.6 3.6-3.2-1.7-3.2 1.7.6-3.6-2.6-2.5 3.6-.5z"/>
+        </g>
+      </symbol>
     </defs>
   </svg>
 
-  <script src="assets/js/validacion.js?v=1"></script>
-  <script src="assets/js/confirmacion.js?v=1"></script>
-  <script src="assets/js/invitacion.js?v=1"></script>
+  <script src="assets/js/validacion.js?v=2"></script>
+  <script src="assets/js/confirmacion.js?v=2"></script>
+  <script src="assets/js/invitacion.js?v=2"></script>
 </body>
 </html>

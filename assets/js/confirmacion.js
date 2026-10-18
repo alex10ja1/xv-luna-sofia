@@ -28,6 +28,9 @@
     textoPase: 'Pase personal',
     mensajeExito: '¡Gracias! Tu confirmación quedó registrada.',
     etiquetaMensaje: 'Mensaje para la festejada',
+    etiquetaPersonas: 'Número de personas',
+    ayudaPersonas: '',
+    mensajeCerrado: '',
     textoPrivacidad: 'Tus datos solo los verá la familia organizadora.'
   };
 
@@ -88,8 +91,9 @@
           '</fieldset>' +
           '<div class="conf__si" hidden>' +
             '<div class="conf__campo" data-campo="personas">' +
-              '<label class="conf__etiqueta" for="conf-personas">Número de personas</label>' +
-              '<select id="conf-personas" name="personas" aria-describedby="conf-personas-error"></select>' +
+              '<label class="conf__etiqueta" for="conf-personas">' + escapar(opciones.etiquetaPersonas) + '</label>' +
+              (opciones.ayudaPersonas ? '<p class="conf__ayuda" id="conf-personas-ayuda">' + escapar(opciones.ayudaPersonas) + '</p>' : '') +
+              '<select id="conf-personas" name="personas" aria-describedby="' + (opciones.ayudaPersonas ? 'conf-personas-ayuda ' : '') + 'conf-personas-error"></select>' +
               '<p class="conf__error" id="conf-personas-error" hidden></p>' +
             '</div>' +
             '<fieldset class="conf__campo" data-campo="asistentes" aria-describedby="conf-asistentes-error">' +
@@ -249,10 +253,10 @@
       aviso.hidden = true;
       pase.hidden = true;
       resultado.className = 'conf__resultado conf__resultado--cerrado';
-      resultado.innerHTML = '<p>' + (fechaLimite
+      resultado.innerHTML = '<p>' + (opciones.mensajeCerrado ? escapar(opciones.mensajeCerrado) : (fechaLimite
         ? 'Las confirmaciones cerraron el ' + escapar(V.fechaEnTexto(fechaLimite)) + '.'
         : 'Las confirmaciones ya cerraron.') +
-        ' Si tienes dudas, contacta a la familia.</p>';
+        ' Si tienes dudas, contacta a la familia.') + '</p>';
       resultado.hidden = false;
     }
 

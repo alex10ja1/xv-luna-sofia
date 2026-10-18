@@ -160,6 +160,7 @@ button:focus-visible, a:focus-visible { outline: 3px solid var(--principal); out
 .total--grande .total__numero { font-size: 64px; }
 .total__texto { margin: 6px 0 0; font-size: 13px; line-height: 1.3; color: var(--suave); }
 .total--grande .total__texto { color: #FFFFFF; font-size: 16px; }
+.total__nota { margin: 10px auto 0; max-width: 30ch; font-family: inherit; font-size: 14px; font-style: italic; line-height: 1.35; color: rgba(255, 255, 255, .92); }
 
 .aviso {
   margin: 12px 0 0;
