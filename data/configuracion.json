@@ -79,10 +79,11 @@
   },
 
   "recomendaciones": {
-    "_comentario": "Íconos disponibles: sin-alcohol, sin-vape, menores, pase.",
+    "_comentario": "Íconos disponibles: sin-ninos, sin-alcohol, sin-vape, menores, pase. 'nota' es opcional y se ve abajo en letra más pequeña.",
     "etiqueta": "Recomendaciones",
     "titulo": "Para que todos disfrutemos",
     "lista": [
+      { "icono": "sin-ninos", "texto": "Amamos a sus pequeños, pero esta celebración es solo para jóvenes y adultos.", "nota": "(a partir de 15 años)" },
       { "icono": "sin-alcohol", "texto": "Te pedimos no ingresar con bebidas alcohólicas." },
       { "icono": "sin-vape", "texto": "Evita ingresar con cigarros electrónicos (vapes)." },
       { "icono": "menores", "texto": "No se permitirá el consumo de alcohol ni de cigarro electrónico a menores de edad." },
@@ -125,6 +126,7 @@
     "paseTitulo": "Pase personal e intransferible",
     "paseTexto": "Tu invitación es válida únicamente para el número de personas que te indicó la familia.",
     "paseCarino": "Con cariño te pedimos no llevar acompañantes adicionales. 💙",
+    "paseSinNinos": "Amamos a sus pequeños, pero esta celebración es solo para jóvenes y adultos (a partir de 15 años).",
     "modo": "real",
     "urlAppsScript": "https://script.google.com/macros/s/AKfycbx2AzjdIS7OaTFhtfYkoJvGtBj5_2_CPv60FXU8yiVpfR53SCX5rcajeGPyZh0h1cQY/exec",
     "fechaLimite": "2026-11-20",

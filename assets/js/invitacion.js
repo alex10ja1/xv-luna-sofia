@@ -23,7 +23,8 @@
     vals: 'icono-vals', cena: 'icono-cena', estrella: 'icono-estrella',
     musica: 'icono-musica', trofeo: 'icono-trofeo', regalo: 'icono-regalo',
     luna: 'icono-luna-linea', 'sin-alcohol': 'icono-sin-alcohol',
-    'sin-vape': 'icono-sin-vape', menores: 'icono-menores', pase: 'icono-boleto'
+    'sin-vape': 'icono-sin-vape', menores: 'icono-menores', pase: 'icono-boleto',
+    'sin-ninos': 'icono-globo'
   };
 
   var GALERIA_MARCOS = 6;
@@ -242,6 +243,12 @@
       circulo.appendChild(icono(r.icono || 'estrella'));
       var p = document.createElement('p');
       p.innerHTML = textoRico(r.texto || '');
+      if (r.nota) {
+        var nota = document.createElement('small');
+        nota.className = 'recomendaciones__nota';
+        nota.textContent = r.nota;
+        p.appendChild(nota);
+      }
       li.appendChild(circulo);
       li.appendChild(p);
       ul.appendChild(li);

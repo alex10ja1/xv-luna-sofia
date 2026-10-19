@@ -784,6 +784,7 @@ h1, h2, h3, p { margin: 0; }
 .recomendaciones__icono svg { width: 28px; height: 28px; }
 .recomendaciones__item p { font-size: 19px; line-height: 1.4; color: var(--tinta); }
 .recomendaciones__item strong { color: var(--azul-rey); }
+.recomendaciones__nota { display: block; margin-top: 3px; font-size: 15px; letter-spacing: .02em; color: var(--plata-oscuro); }
 
 /* ---------- Regalos ---------- */
 .tarjeta__texto strong { color: var(--azul-rey); font-weight: 600; }
@@ -836,6 +837,7 @@ h1, h2, h3, p { margin: 0; }
 .pase__titulo { font-family: var(--fuente-titulo); font-size: 18px; font-weight: 500; letter-spacing: .06em; line-height: 1.3; color: #F4F6FA; }
 .pase__texto { margin-top: 8px; font-size: 19px; line-height: 1.45; color: var(--plata-claro); }
 .pase__texto--carino { font-style: italic; }
+.pase__texto--aviso { margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(214, 220, 232, .3); font-size: 17px; }
 
 /* ---------- Revelar al hacer scroll ---------- */
 .js .revelar { opacity: 0; transform: translateY(24px); transition: opacity 1s ease, transform 1s cubic-bezier(.22, .8, .3, 1); }
