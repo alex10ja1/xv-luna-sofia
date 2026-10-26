@@ -560,7 +560,8 @@ h1, h2, h3, p { margin: 0; }
 }
 .galeria__marco:nth-child(2), .galeria__marco:nth-child(3) { grid-column: span 3; }
 .galeria__marco--grande { grid-column: 1 / -1; aspect-ratio: 4 / 5; }
-.galeria--muchas .galeria__marco:nth-child(n+7) { grid-column: span 2; }
+/* Más de 6 fotos: la grande arriba y las demás en cuadrícula de 3 columnas */
+.galeria--muchas .galeria__marco:nth-child(n+2) { grid-column: span 2; }
 .galeria__luna {
   position: absolute;
   left: 50%; top: 50%;
@@ -620,6 +621,8 @@ h1, h2, h3, p { margin: 0; }
   position: absolute;
   bottom: calc(16px + env(safe-area-inset-bottom, 0px));
   left: 0; right: 0;
+  margin: 0;
+  text-align: center;
   font-family: var(--fuente-sans);
   font-size: 14px;
   letter-spacing: .15em;
@@ -861,8 +864,10 @@ h1, h2, h3, p { margin: 0; }
   .contador__numero { font-size: 42px; }
   .contador__texto { font-size: 12px; }
   .galeria { grid-template-columns: repeat(3, 1fr); max-width: 660px; gap: 14px; }
-  .galeria__marco, .galeria__marco:nth-child(2), .galeria__marco:nth-child(3), .galeria--muchas .galeria__marco:nth-child(n+7) { grid-column: span 1; }
+  .galeria__marco, .galeria__marco:nth-child(2), .galeria__marco:nth-child(3), .galeria--muchas .galeria__marco:nth-child(n+2) { grid-column: span 1; }
   .galeria__marco--grande { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; }
+  .galeria--muchas { max-width: 600px; }
+  .galeria--muchas .galeria__marco--grande { grid-column: 1 / -1; grid-row: auto; aspect-ratio: 4 / 5; }
   .itinerario__titulo { font-size: 25px; }
   #misa, #recepcion { padding-top: 56px; padding-bottom: 56px; }
 }

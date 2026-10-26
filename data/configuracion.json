@@ -92,11 +92,22 @@
   },
 
   "galeria": {
-    "_comentario": "PENDIENTE: fotos de la sesión (llegan el miércoles 21 o el jueves 22 de octubre). Mientras la lista esté vacía se ven 6 marcos «Muy pronto». La primera foto es la grande (vertical). 'posicion' es opcional y mueve el recorte hacia la cara, por ejemplo \"50% 30%\". Ejemplo: { \"src\": \"fotos/foto-01.jpg\", \"alt\": \"Luna Sofía\", \"posicion\": \"50% 30%\" }",
+    "_comentario": "Fotos de la sesión agregadas el 26 de octubre de 2026 (10 de 13). La primera es la grande (vertical); las otras 9 van en cuadrícula de 3×3. 'posicion' mueve el recorte para que no se corte la cara, por ejemplo \"50% 30%\".",
     "etiqueta": "Galería",
     "titulo": "Mis XV en fotos",
     "textoPronto": "Muy pronto, las fotos de mi sesión ✨",
-    "fotos": []
+    "fotos": [
+      { "src": "fotos/01-principal.jpg", "alt": "Luna Sofía en su sesión de XV años", "posicion": "50% 30%" },
+      { "src": "fotos/02.jpg", "alt": "Luna Sofía en su sesión de XV años", "posicion": "50% 12%" },
+      { "src": "fotos/03.jpg", "alt": "Luna Sofía en su sesión de XV años", "posicion": "50% 50%" },
+      { "src": "fotos/04.jpg", "alt": "Luna Sofía en su sesión de XV años", "posicion": "48% 50%" },
+      { "src": "fotos/05.jpg", "alt": "Luna Sofía en su sesión de XV años", "posicion": "50% 15%" },
+      { "src": "fotos/06.jpg", "alt": "Luna Sofía en su sesión de XV años", "posicion": "54% 50%" },
+      { "src": "fotos/07.jpg", "alt": "Luna Sofía en su sesión de XV años", "posicion": "30% 50%" },
+      { "src": "fotos/08.jpg", "alt": "Luna Sofía en su sesión de XV años", "posicion": "50% 20%" },
+      { "src": "fotos/09.jpg", "alt": "Luna Sofía en su sesión de XV años", "posicion": "50% 30%" },
+      { "src": "fotos/10.jpg", "alt": "Luna Sofía en su sesión de XV años", "posicion": "55% 50%" }
+    ]
   },
 
   "mesaRegalos": {

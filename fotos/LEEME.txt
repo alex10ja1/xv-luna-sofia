@@ -1,5 +1,4 @@
-Fotos de la galería (PENDIENTE: llegan el miércoles 21 o el jueves 22 de octubre de 2026).
-Nombres: foto-01.jpg, foto-02.jpg... Ancho máximo 1200 px, JPG de buena calidad.
-Agrégalas en data/configuracion.json → galeria.fotos (la primera es la grande, vertical).
-Con "posicion" (por ejemplo "50% 30%") se centra el recorte en la cara.
-Mientras la lista esté vacía se ven 6 marcos "Muy pronto".
+Fotos de la galería (sesión de XV años, agregadas el 26 de octubre de 2026).
+01-principal.jpg es la grande (vertical); 02.jpg a 10.jpg van en la cuadrícula de 3x3.
+Ancho máximo 1200 px, JPG calidad 82, sin metadatos (EXIF/GPS), menos de 250 KB cada una.
+La lista está en data/configuracion.json -> galeria.fotos ("posicion" centra el recorte en la cara).
