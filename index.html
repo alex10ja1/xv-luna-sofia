@@ -25,7 +25,7 @@
   <link rel="preload" href="assets/fuentes/great-vibes-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fuentes/cormorant-garamond-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fuentes/cinzel-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/estilos.css?v=3">
+  <link rel="stylesheet" href="assets/css/estilos.css?v=4">
   <link rel="stylesheet" href="assets/css/confirmacion.css?v=2">
 </head>
 <body class="sobre-cerrado">
@@ -81,6 +81,7 @@
         <div class="portada__luna" aria-hidden="true">
           <span class="portada__halo"></span>
           <svg viewBox="0 0 64 64"><use href="#icono-luna"/></svg>
+          <img class="portada__foto" src="fotos/cara-portada.jpg" alt="" width="400" height="400" decoding="async">
         </div>
 
         <p class="portada__etiqueta" data-config="portada.etiqueta">Mis XV años</p>
@@ -95,13 +96,10 @@
       </a>
     </section>
 
-    <!-- ============== 3. FRASE ============== -->
-    <section class="seccion" id="frase" aria-label="Frase">
-      <div class="tarjeta tarjeta--frase revelar">
-        <svg class="adorno" viewBox="0 0 120 20" aria-hidden="true"><use href="#adorno-linea"/></svg>
-        <blockquote class="frase" data-config="frase">Este día tan especial quiero compartirlo contigo, en presencia de Dios y de mi familia.</blockquote>
-        <svg class="adorno adorno--abajo" viewBox="0 0 120 20" aria-hidden="true"><use href="#adorno-linea"/></svg>
-      </div>
+    <!-- ============== 3. FOTO PROTAGONISTA CON LA FRASE ============== -->
+    <section class="protagonista revelar" id="frase" aria-label="Frase">
+      <img class="protagonista__foto" src="fotos/protagonista.jpg" alt="Luna Sofía con su vestido azul y su corona" width="1200" height="1785" decoding="async">
+      <blockquote class="protagonista__frase plata" data-config="frase">Este día tan especial quiero compartirlo contigo, en presencia de Dios y de mi familia.</blockquote>
     </section>
 
     <!-- ============== 4. CUENTA REGRESIVA ============== -->
@@ -242,7 +240,10 @@
     <!-- ============== 13. CIERRE ============== -->
     <section class="cierre" id="cierre" aria-label="Despedida">
       <div class="cierre__luna revelar" aria-hidden="true"><svg viewBox="0 0 64 64"><use href="#icono-luna"/></svg></div>
-      <p class="cierre__firma plata revelar" data-config="cierre.firma">Luna Sofía</p>
+      <div class="cierre__nombre revelar">
+        <img class="cierre__foto" src="fotos/cara-cierre.jpg" alt="" width="300" height="300" loading="lazy" decoding="async">
+        <p class="cierre__firma plata" data-config="cierre.firma">Luna Sofía</p>
+      </div>
     </section>
   </main>
 
