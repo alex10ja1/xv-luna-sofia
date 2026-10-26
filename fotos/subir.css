@@ -1,0 +1,339 @@
+/* ==========================================================================
+   SUBIR.CSS — Página "Comparte tus fotos" (primero celular)
+   Los colores y las letras vienen de tema.css.
+   Pensada para gente que no es experta en celulares: botones de al menos
+   48 px (los principales, 60 px) y textos de al menos 16 px.
+   ========================================================================== */
+
+* , *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--fondo-imagen, var(--fondo));
+  background-color: var(--fondo);
+  background-attachment: fixed;
+  color: var(--tinta);
+  font-family: var(--fuente-texto);
+  font-size: 17px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, p { margin: 0; }
+
+.oculto-visual {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- encabezado ----------
+   (tema.css se carga después de este archivo: sus reglas ganan) */
+.encabezado {
+  padding: max(28px, env(safe-area-inset-top)) 16px 8px;
+  text-align: center;
+  color: var(--texto-encabezado);
+}
+.adorno { width: 54px; height: 54px; margin: 0 auto 10px; }
+.adorno svg { width: 100%; height: 100%; display: block; }
+.adorno--chico { width: 44px; height: 44px; }
+.encabezado__titulo {
+  font-family: var(--fuente-titulo);
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+  text-wrap: balance; /* que no quede una palabra sola en la segunda línea */
+}
+.encabezado__nombre {
+  margin-top: 2px;
+  font-family: var(--fuente-nombre);
+  font-weight: 400;
+  font-size: 52px;
+  line-height: 1.15;
+  padding: 0 8px;
+}
+.linea {
+  display: block;
+  width: 140px;
+  height: 1px;
+  margin: 12px auto 14px;
+  background: linear-gradient(90deg, transparent, var(--acento) 30%, var(--acento) 70%, transparent);
+}
+.encabezado__mensaje {
+  font-family: var(--fuente-titulo);
+  font-style: italic;
+  font-size: 21px;
+  line-height: 1.35;
+  max-width: 26em;
+  margin: 0 auto;
+}
+.encabezado__bienvenida { margin: 10px auto 0; max-width: 30em; font-size: 16px; opacity: .92; }
+
+/* ---------- contenido y tarjetas ---------- */
+.contenido { width: 100%; max-width: 560px; margin: 0 auto; padding: 16px 16px 32px; }
+
+.aviso-demo {
+  margin: 0 0 12px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: #FFF4CC;
+  color: #5A4500;
+  font-size: 16px;
+  text-align: center;
+}
+
+.tarjeta {
+  background: var(--tarjeta);
+  color: var(--tinta);
+  border: 1px solid var(--linea);
+  border-radius: 20px;
+  padding: 22px 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .12);
+}
+.tarjeta--centro { text-align: center; }
+.tarjeta__titulo { font-family: var(--fuente-titulo); font-size: 30px; font-weight: 700; line-height: 1.2; }
+.tarjeta__texto { margin-top: 6px; font-size: 18px; color: var(--suave); }
+
+.girando {
+  display: inline-block;
+  width: 34px; height: 34px;
+  margin-bottom: 10px;
+  border: 3px solid var(--linea);
+  border-top-color: var(--principal);
+  border-radius: 50%;
+  animation: girar .9s linear infinite;
+}
+@keyframes girar { to { transform: rotate(360deg); } }
+
+.chip-mesa {
+  display: table;
+  margin: 0 auto 14px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--linea);
+  background: color-mix(in srgb, var(--principal) 8%, var(--tarjeta));
+  color: var(--principal);
+  font-weight: 600;
+  font-size: 17px;
+}
+
+/* ---------- botones y campos ---------- */
+.boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 12px 22px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--principal);
+  color: var(--sobre-principal);
+  font-family: var(--fuente-texto);
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform .12s ease, background-color .2s ease;
+}
+.boton:hover { background: var(--principal-oscuro, var(--principal)); }
+.boton:active { transform: scale(.98); }
+.boton:focus-visible, .boton-texto:focus-visible, .foto__quitar:focus-visible, .campo:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--principal) 55%, transparent);
+  outline-offset: 3px;
+}
+.boton[disabled] { opacity: .55; cursor: default; transform: none; }
+.boton svg { width: 26px; height: 26px; flex: none; }
+.boton--grande { display: flex; width: 100%; min-height: 60px; font-size: 20px; }
+.boton--subir { margin-top: 20px; }
+
+.boton-texto {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  margin-top: 6px;
+  padding: 8px 2px;
+  border: 0;
+  background: none;
+  color: var(--principal);
+  font: inherit;
+  font-size: 17px;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.ayuda { margin-top: 8px; font-size: 16px; color: var(--suave); text-align: center; }
+.aviso {
+  margin-top: 12px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--principal) 9%, var(--tarjeta));
+  color: var(--tinta);
+  font-size: 16px;
+  text-align: center;
+}
+
+.datos { margin-top: 18px; }
+.etiqueta { display: block; margin: 0 0 6px; font-weight: 600; font-size: 17px; }
+.opcional { font-weight: 400; color: var(--suave); }
+.campo {
+  display: block;
+  width: 100%;
+  min-height: 52px;
+  padding: 12px 14px;
+  border: 1.5px solid var(--linea);
+  border-radius: 14px;
+  background: #fff;
+  color: var(--tinta);
+  font: inherit;
+  font-size: 18px; /* 16 px o más: el iPhone no hace zoom al escribir */
+}
+textarea.campo { resize: vertical; min-height: 96px; }
+#caja-mensaje { margin-top: 6px; }
+
+/* ---------- miniaturas elegidas ---------- */
+.miniaturas {
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.miniaturas:empty { display: none; }
+.foto {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 12px;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--linea) 60%, var(--tarjeta));
+}
+.foto img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.foto__quitar {
+  position: absolute;
+  top: 0; right: 0;
+  width: 48px; height: 48px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+.foto__quitar span {
+  display: grid;
+  place-items: center;
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, .62);
+  color: #fff;
+  font-size: 20px;
+  line-height: 1;
+}
+.foto__estado {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 3px 4px;
+  font-size: 16px;
+  line-height: 1.3;
+  font-weight: 600;
+  text-align: center;
+  color: #fff;
+  background: rgba(0, 0, 0, .58);
+}
+.foto--subiendo .foto__estado, .foto--preparando .foto__estado { background: color-mix(in srgb, var(--principal) 85%, transparent); }
+.foto--subida .foto__estado { background: color-mix(in srgb, var(--exito) 90%, transparent); }
+.foto--error, .foto--ilegible { outline: 3px solid var(--error); outline-offset: -3px; }
+.foto--error .foto__estado, .foto--ilegible .foto__estado { background: var(--error); }
+.foto--ilegible img { opacity: .25; }
+
+/* Mensaje completo de las fotos que no se pudieron preparar o subir */
+.nota-fotos { margin-top: 10px; font-size: 16px; color: var(--error); text-align: center; }
+
+/* ---------- progreso ---------- */
+.progreso { margin-top: 20px; }
+.progreso__texto { font-size: 19px; font-weight: 600; text-align: center; }
+.barra {
+  margin-top: 10px;
+  height: 14px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--linea) 70%, var(--tarjeta));
+  overflow: hidden;
+}
+.barra__relleno {
+  display: block;
+  height: 100%;
+  width: 0;
+  border-radius: inherit;
+  background: var(--principal);
+  transition: width .35s ease;
+}
+
+/* ---------- errores ---------- */
+.errores { margin-top: 18px; text-align: center; }
+.errores__texto { color: var(--error); font-size: 17px; font-weight: 500; margin-bottom: 12px; }
+
+/* ---------- éxito ---------- */
+.exito:focus { outline: none; }
+.exito__icono {
+  display: grid;
+  place-items: center;
+  width: 72px; height: 72px;
+  margin: 0 auto 12px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--exito) 14%, var(--tarjeta));
+  color: var(--exito);
+}
+.exito__icono svg { width: 40px; height: 40px; }
+.exito .boton { margin-top: 20px; }
+
+/* ---------- confeti suave ---------- */
+.confeti { position: fixed; inset: 0; pointer-events: none; overflow: hidden; z-index: 50; }
+.confeti i {
+  position: absolute;
+  top: -16px;
+  width: 9px; height: 14px;
+  border-radius: 2px;
+  opacity: .9;
+  animation: caer var(--duracion, 3.2s) cubic-bezier(.25, .6, .45, 1) var(--retraso, 0s) forwards;
+}
+@keyframes caer {
+  0%   { transform: translate3d(0, 0, 0) rotate(0deg); opacity: 0; }
+  10%  { opacity: .9; }
+  100% { transform: translate3d(var(--deriva, 30px), 105vh, 0) rotate(var(--giro, 540deg)); opacity: 0; }
+}
+
+/* ---------- pie ---------- */
+.pie {
+  padding: 8px 16px max(28px, env(safe-area-inset-bottom));
+  text-align: center;
+  font-size: 15px;
+  color: var(--texto-encabezado);
+  opacity: .85;
+}
+.marca { font-family: var(--fuente-nombre); font-size: 22px; }
+
+@media (min-width: 720px) {
+  .encabezado { padding-top: 44px; }
+  .encabezado__titulo { font-size: 26px; }
+  .encabezado__nombre { font-size: 68px; }
+  .tarjeta { padding: 30px 28px; }
+  .miniaturas { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .girando { animation-duration: 2.5s; }
+  .barra__relleno, .boton { transition: none; }
+}

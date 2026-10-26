@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es" data-config="../config.json">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="referrer" content="no-referrer">
+  <title>Galería en vivo</title>
+  <link rel="stylesheet" href="../subir.css?v=1">
+  <link rel="stylesheet" href="galeria.css?v=1">
+  <link rel="stylesheet" href="../tema.css?v=1"><!-- al final: el tema de cada clienta gana -->
+</head>
+<body>
+  <header class="encabezado" id="encabezado">
+    <div class="adorno" aria-hidden="true"><svg viewBox="0 0 64 64"><use href="#adorno-camara"/></svg></div>
+    <p class="encabezado__titulo">Galería en vivo</p>
+    <h1 class="encabezado__nombre" id="nombre" hidden></h1>
+    <span class="linea" aria-hidden="true"></span>
+  </header>
+
+  <main class="contenido" id="contenido">
+    <!-- 1. Clave -->
+    <section class="tarjeta acceso" id="vista-clave" aria-labelledby="titulo-clave">
+      <h2 class="tarjeta__titulo" id="titulo-clave">Escribe tu clave</h2>
+      <p class="ayuda">Son 6 letras y números. Te la mandó Invitara por mensaje.</p>
+      <form id="form-clave" novalidate>
+        <label class="etiqueta" for="clave">Clave de la galería</label>
+        <input class="campo campo--clave" id="clave" name="clave" type="text" inputmode="text" autocomplete="off"
+               autocapitalize="characters" spellcheck="false" maxlength="12" aria-describedby="error-clave" required>
+        <p class="error" id="error-clave" role="alert" hidden></p>
+        <button class="boton boton--grande" type="submit" id="boton-entrar">Entrar</button>
+      </form>
+    </section>
+
+    <!-- 2. Galería -->
+    <section id="vista-galeria" hidden aria-label="Fotos de los invitados">
+      <div class="resumen">
+        <p class="contador"><span class="contador__numero" id="contador">0</span> <span id="contador-texto">fotos</span></p>
+        <p class="actualizado" id="actualizado"></p>
+      </div>
+
+      <div class="acciones">
+        <a class="boton boton--grande" id="boton-drive" href="#" target="_blank" rel="noopener noreferrer" hidden>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7.5A2.5 2.5 0 0 1 6.5 5H10l2 2h5.5A2.5 2.5 0 0 1 20 9.5v7a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 16.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+          Abrir carpeta en Google Drive
+        </a>
+        <div class="acciones__fila">
+          <button class="boton boton--claro" type="button" id="boton-actualizar">Actualizar</button>
+          <button class="boton boton--texto" type="button" id="boton-salir">Salir</button>
+        </div>
+        <p class="ayuda">Desde la carpeta de Drive puedes ver las fotos en tamaño completo y descargarlas todas.</p>
+      </div>
+
+      <p class="error error--global" id="error-galeria" role="alert" hidden></p>
+
+      <div class="filtros" id="filtros" role="group" aria-label="Filtrar por mesa"></div>
+
+      <p class="conteo" id="conteo" aria-live="polite"></p>
+      <ul class="cuadricula" id="cuadricula"></ul>
+      <p class="vacio" id="vacio" hidden>Todavía no hay fotos. Cuando los invitados suban, aparecerán aquí.</p>
+      <button class="boton boton--claro boton--ancho" type="button" id="boton-mas" hidden>Ver más fotos</button>
+    </section>
+  </main>
+
+  <footer class="pie" id="pie">Hecho con cariño por <span class="marca">Invitara</span></footer>
+
+  <!-- Visor de una foto -->
+  <div class="visor" id="visor" role="dialog" aria-modal="true" aria-label="Foto" hidden>
+    <img class="visor__foto" id="visor-foto" alt="">
+    <div class="visor__pie">
+      <p class="visor__quien" id="visor-quien"></p>
+      <p class="visor__mensaje" id="visor-mensaje" hidden></p>
+      <p class="visor__cuenta" id="visor-cuenta"></p>
+    </div>
+    <button class="visor__boton visor__cerrar" type="button" id="visor-cerrar" aria-label="Cerrar">×</button>
+    <button class="visor__boton visor__anterior" type="button" id="visor-anterior" aria-label="Foto anterior">‹</button>
+    <button class="visor__boton visor__siguiente" type="button" id="visor-siguiente" aria-label="Foto siguiente">›</button>
+  </div>
+
+  <!-- Modo pantalla (?pantalla=1): carrusel para proyectar en el salón -->
+  <div class="pantalla" id="pantalla" hidden>
+    <div class="pantalla__fondo" id="pantalla-fondo"></div>
+    <img class="pantalla__foto" id="pantalla-a" alt="">
+    <img class="pantalla__foto" id="pantalla-b" alt="">
+    <p class="pantalla__quien" id="pantalla-quien"></p>
+    <p class="pantalla__vacia" id="pantalla-vacia" hidden>Las fotos de la fiesta aparecerán aquí 📸</p>
+    <p class="pantalla__invitacion" id="pantalla-invitacion">📸 Comparte tus fotos: escanea el código QR de tu mesa</p>
+    <div class="pantalla__controles" id="pantalla-controles">
+      <button class="boton" type="button" id="pantalla-completa">Pantalla completa</button>
+      <button class="boton boton--claro" type="button" id="pantalla-salir">Salir</button>
+    </div>
+  </div>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <linearGradient id="grad-adorno" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" style="stop-color: var(--adorno-1, #F7F8FB)"/>
+        <stop offset=".5" style="stop-color: var(--adorno-2, #C9CED9)"/>
+        <stop offset="1" style="stop-color: var(--adorno-3, #E8EBF1)"/>
+      </linearGradient>
+      <mask id="mascara-luna">
+        <rect width="64" height="64" fill="#fff"/>
+        <circle cx="42" cy="28" r="23" fill="#000"/>
+      </mask>
+      <symbol id="adorno-luna" viewBox="0 0 64 64">
+        <circle cx="30" cy="32" r="26" fill="url(#grad-adorno)" mask="url(#mascara-luna)"/>
+      </symbol>
+      <symbol id="adorno-estrella" viewBox="0 0 64 64">
+        <path d="M32 4l5.6 22.4L60 32l-22.4 5.6L32 60l-5.6-22.4L4 32l22.4-5.6z" fill="url(#grad-adorno)"/>
+      </symbol>
+      <symbol id="adorno-camara" viewBox="0 0 64 64">
+        <path d="M22 14h20l4 6h8a4 4 0 0 1 4 4v24a4 4 0 0 1-4 4H10a4 4 0 0 1-4-4V24a4 4 0 0 1 4-4h8z" fill="url(#grad-adorno)"/>
+        <circle cx="32" cy="35" r="10" fill="none" style="stroke: var(--fondo, #fff)" stroke-width="4"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <script src="galeria.js?v=1"></script>
+</body>
+</html>
