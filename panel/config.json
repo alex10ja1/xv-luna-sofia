@@ -1,6 +1,8 @@
 {
   "_comentario": "Panel de invitados de Invitara. Cambia solo los valores. Ver INTEGRAR.md, sección «Panel de una clienta nueva». La clave NO va aquí: vive en la pestaña Config de la hoja.",
   "evento": "XV Luna Sofía",
+  "titulo": "Lista de invitados · XV Luna Sofía",
+  "detalle": "Sábado 5 de diciembre de 2026 · Confirmaciones hasta el 20 de noviembre",
   "urlAppsScript": "https://script.google.com/macros/s/AKfycbx2AzjdIS7OaTFhtfYkoJvGtBj5_2_CPv60FXU8yiVpfR53SCX5rcajeGPyZh0h1cQY/exec",
   "colores": {
     "papel": "#EEF1F8",

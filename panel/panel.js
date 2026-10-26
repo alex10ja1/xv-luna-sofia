@@ -152,25 +152,35 @@
     campoClave.focus();
   }
 
+  function ponerTitulo(texto) {
+    $('evento').textContent = texto; // puede traer espacios que no se parten ( )
+    var plano = texto.replace(/ /g, ' ');
+    document.title = /invitados/i.test(plano) ? plano : 'Lista de invitados · ' + plano;
+  }
+
   function mostrarPanel() {
     vistaClave.hidden = true;
     vistaPanel.hidden = false;
     mostrarError(errorPanel, '');
-    if (datos.evento) { $('evento').textContent = datos.evento; document.title = 'Lista de invitados · ' + datos.evento; }
+    // Si config.json trae un título fijo, se respeta; si no, se usa el "Evento" de la hoja.
+    if (!config.titulo && datos.evento) ponerTitulo(datos.evento);
 
     var t = datos.totales;
     $('t-personas').textContent = t.personas;
-    $('t-familias').textContent = t.familias;
+    $('t-confirmaciones').textContent = t.confirmaciones;
     $('t-no').textContent = t.noAsistiran;
+    $('t-duplicados').textContent = t.duplicados;
+    $('t-duplicados').parentNode.classList.toggle('total--alerta', t.duplicados > 0);
     $('t-faltan').textContent = t.faltan;
     $('t-faltan-texto').textContent = 'lugares libres de ' + t.maximoPaquete;
     $('actualizado').textContent = 'Actualizado a las ' + formatoFecha(datos.actualizado, { hour: 'numeric', minute: '2-digit' });
 
     var aviso = $('aviso-duplicados');
     aviso.hidden = !t.duplicados;
-    aviso.textContent = t.duplicados === 1
-      ? 'Hay 1 confirmación repetida (marcada abajo). La persona pudo haber corregido su respuesta: Invitara la revisa.'
-      : 'Hay ' + t.duplicados + ' confirmaciones repetidas (marcadas abajo). Pudieron ser correcciones: Invitara las revisa.';
+    aviso.textContent = (t.duplicados === 1
+      ? 'Hay 1 posible duplicado (marcado en amarillo): un teléfono que confirmó más de una vez.'
+      : 'Hay ' + t.duplicados + ' posibles duplicados (marcados en amarillo): teléfonos que confirmaron más de una vez.') +
+      ' Casi siempre es alguien que corrigió su respuesta; vale la más reciente. Mientras tanto, el total de personas puede contarlos doble.';
 
     var si = datos.confirmaciones.filter(function (c) { return c.asistira === 'Sí'; }).length;
     var conteos = { todos: datos.confirmaciones.length, si: si, no: datos.confirmaciones.length - si };
@@ -262,7 +272,7 @@
     // BOM al inicio para que Excel lea bien los acentos; fin de línea de Windows.
     var csv = '﻿' + filas.map(function (f) { return f.map(celdaCSV).join(','); }).join('\r\n') + '\r\n';
     var hoy = formatoFecha(new Date().toISOString(), { year: 'numeric', month: '2-digit', day: '2-digit' }).split('/').reverse().join('-');
-    var nombre = 'invitados-' + (sinAcentos(datos.evento || 'evento').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'evento') + '-' + hoy + '.csv';
+    var nombre = 'invitados-' + (sinAcentos(config.evento || datos.evento || 'evento').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'evento') + '-' + hoy + '.csv';
 
     var enlace = document.createElement('a');
     enlace.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' }));
@@ -330,7 +340,9 @@
     .then(function (c) {
       config = c;
       aplicarColores(c.colores);
-      if (c.evento) { $('evento').textContent = c.evento; document.title = 'Lista de invitados · ' + c.evento; }
+      if (c.titulo || c.evento) ponerTitulo(c.titulo || c.evento);
+      if (c.titulo) document.querySelector('.subtitulo').hidden = true; // el título ya dice qué es
+      if (c.detalle) { $('detalle').textContent = c.detalle; $('detalle').hidden = false; }
       if (!c.urlAppsScript) {
         formClave.hidden = true;
         mostrarError(errorClave, 'Este panel todavía no está conectado. Avísale a Invitara.');
