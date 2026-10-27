@@ -144,7 +144,7 @@
     "maximoPersonas": 5,
     "textoPase": "Pase personal",
     "etiquetaPersonas": "¿Cuántas personas de tu pase asistirán?",
-    "ayudaPersonas": "Según el número que te indicó la familia",
+    "ayudaPersonas": "Solo el número de personas que te indicó la familia",
     "mensajeCerrado": "Las confirmaciones cerraron el 20 de noviembre. Si tienes dudas, contacta a la familia.",
     "mensajeExito": "¡Gracias! Tu confirmación quedó registrada."
   },

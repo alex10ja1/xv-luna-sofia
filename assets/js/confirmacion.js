@@ -93,7 +93,7 @@
             '<div class="conf__campo" data-campo="personas">' +
               '<label class="conf__etiqueta" for="conf-personas">' + escapar(opciones.etiquetaPersonas) + '</label>' +
               (opciones.ayudaPersonas ? '<p class="conf__ayuda" id="conf-personas-ayuda">' + escapar(opciones.ayudaPersonas) + '</p>' : '') +
-              '<select id="conf-personas" name="personas" aria-describedby="' + (opciones.ayudaPersonas ? 'conf-personas-ayuda ' : '') + 'conf-personas-error"></select>' +
+              '<select id="conf-personas" name="personas" autocomplete="off" aria-describedby="' + (opciones.ayudaPersonas ? 'conf-personas-ayuda ' : '') + 'conf-personas-error"></select>' +
               '<p class="conf__error" id="conf-personas-error" hidden></p>' +
             '</div>' +
             '<fieldset class="conf__campo" data-campo="asistentes" aria-describedby="conf-asistentes-error">' +
@@ -114,6 +114,14 @@
           '<p class="conf__privacidad">' + escapar(opciones.textoPrivacidad) + '</p>' +
         '</form>' +
         '<div class="conf__resultado" tabindex="-1" hidden></div>' +
+        '<dialog class="conf__dialogo" aria-labelledby="conf-dialogo-titulo" aria-describedby="conf-dialogo-texto">' +
+          '<p class="conf__dialogo-titulo" id="conf-dialogo-titulo">' + escapar(opciones.textoPase) + '</p>' +
+          '<p class="conf__dialogo-texto" id="conf-dialogo-texto"></p>' +
+          '<div class="conf__dialogo-botones">' +
+            '<button type="button" class="conf__boton" data-dialogo="si">Sí, confirmo</button>' +
+            '<button type="button" class="conf__boton conf__boton--secundario" data-dialogo="corregir">Corregir</button>' +
+          '</div>' +
+        '</dialog>' +
         '<p class="conf__estado" role="status" aria-live="polite"></p>' +
       '</div>';
 
@@ -127,6 +135,7 @@
     var boton = form.querySelector('.conf__boton');
     var resultado = raiz.querySelector('.conf__resultado');
     var anuncio = raiz.querySelector('.conf__estado');
+    var dialogo = raiz.querySelector('.conf__dialogo');
 
     function campoTexto(nombre, etiqueta, tipo, autocompletar, largo, pista) {
       var id = 'conf-' + nombre;
@@ -299,6 +308,37 @@
       if (si) anuncio.textContent = 'Enviando…';
     }
 
+    /* --- recordatorio del pase (2 personas o más) --- */
+
+    function abrirDialogo() {
+      if (typeof dialogo.showModal === 'function') dialogo.showModal();
+      else dialogo.setAttribute('open', '');
+      dialogo.querySelector('[data-dialogo="corregir"]').focus();
+    }
+
+    function cerrarDialogo() {
+      if (typeof dialogo.close === 'function') dialogo.close();
+      else dialogo.removeAttribute('open');
+    }
+
+    function recordarPase(personas) {
+      dialogo.querySelector('.conf__dialogo-texto').innerHTML =
+        'Recuerda: tu pase es personal y solo es válido para el número de personas que te indicó la familia. ' +
+        '¿Confirmas que asistirán <strong>' + personas + ' personas</strong>?';
+      abrirDialogo();
+    }
+
+    dialogo.addEventListener('click', function (evento) {
+      var cual = evento.target.closest && evento.target.closest('[data-dialogo]');
+      if (!cual) return;
+      cerrarDialogo();
+      if (cual.getAttribute('data-dialogo') === 'si' && estado.ultimoEnvio) enviar(estado.ultimoEnvio);
+      else selectPersonas.focus();
+    });
+
+    // Esc cuenta como "Corregir".
+    dialogo.addEventListener('cancel', function () { setTimeout(function () { selectPersonas.focus(); }, 0); });
+
     /* --- envío --- */
 
     function reunirDatos() {
@@ -355,6 +395,7 @@
         mensaje: limpio.mensaje,
         sitioWeb: datos.sitioWeb
       };
+      if (limpio.asistira === 'Sí' && limpio.personas >= 2) { recordarPase(limpio.personas); return; }
       enviar(estado.ultimoEnvio);
     });
 

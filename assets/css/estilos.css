@@ -914,6 +914,31 @@ h1, h2, h3, p { margin: 0; }
 /* ---------- Confirmación sobre la tarjeta perla ---------- */
 .tarjeta--formulario .conf { font-size: 18px; }
 
+/* Ventana "pase personal": mismo estilo que el recuadro del pase
+   (".conf" delante: confirmacion.css se carga después) */
+.conf .conf__dialogo {
+  position: fixed;
+  color: var(--plata-claro);
+  background: #10296E;
+  border: 1.5px solid #C9CFDB;
+  box-shadow: 0 18px 40px rgba(5, 12, 45, .55);
+}
+.conf .conf__dialogo::before {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  border: 1px solid rgba(214, 220, 232, .35);
+  border-radius: 13px;
+  pointer-events: none;
+}
+.conf .conf__dialogo::backdrop { background: rgba(6, 14, 46, .72); }
+.conf .conf__dialogo-titulo { font-family: var(--fuente-titulo); font-size: 18px; font-weight: 500; text-transform: none; letter-spacing: .06em; color: #F4F6FA; }
+.conf .conf__dialogo-texto { font-size: 19px; }
+.conf .conf__dialogo-texto strong { color: #FFFFFF; font-weight: 600; }
+.conf .conf__dialogo .conf__boton { position: relative; color: var(--azul-rey); background: #FFFFFF; border-color: #FFFFFF; }
+.conf .conf__dialogo .conf__boton--secundario { color: #F4F6FA; background: transparent; border-color: #C9CFDB; }
+.conf .conf__dialogo .conf__boton:focus-visible { outline-color: #FFFFFF; }
+
 /* ==========================================================================
    Computadora
    ========================================================================== */

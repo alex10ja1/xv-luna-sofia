@@ -220,6 +220,29 @@
   white-space: nowrap;
 }
 
+/* ---------- recordatorio del pase (ventana) ---------- */
+.conf__dialogo {
+  width: min(420px, calc(100% - 32px));
+  margin: auto;
+  padding: 1.5rem 1.25rem 1.25rem;
+  text-align: center;
+  font-family: var(--fuente-cuerpo, inherit);
+  color: var(--conf-texto);
+  background: var(--conf-fondo-campo);
+  border: 1.5px solid var(--conf-principal);
+  border-radius: 18px;
+}
+.conf__dialogo::backdrop { background: rgba(10, 15, 40, 0.6); }
+.conf__dialogo-titulo {
+  margin: 0 0 0.6rem;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--conf-principal);
+}
+.conf__dialogo-texto { margin: 0 0 1.1rem; line-height: 1.45; }
+.conf__dialogo-botones { display: grid; gap: 0.5rem; }
+
 @media (min-width: 560px) {
   .conf__acciones { grid-template-columns: 1fr 1fr; }
 }
