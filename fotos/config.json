@@ -1,7 +1,7 @@
 {
   "_comentario": "Galería con QR de Invitara · XV Luna Sofía. Cambia solo los valores. Ver INTEGRAR.md de la plantilla galeria-qr. La clave de la galería en vivo NO va aquí.",
-  "modo": "demo",
-  "urlAppsScript": "",
+  "modo": "real",
+  "urlAppsScript": "https://script.google.com/macros/s/AKfycbysQy30u-_zei5vph37e-TpQhpxakOhemZa3nX_f7E22aiJ0WM8rcZDt_euy_kyQyo_Sg/exec",
   "titulo": "Comparte tus fotos de mis XV",
   "nombre": "Luna Sofía",
   "mensaje": "Gracias por capturar estos momentos conmigo 💙",
